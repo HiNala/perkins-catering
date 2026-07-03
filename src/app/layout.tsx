@@ -18,7 +18,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = "https://perkins-catering.up.railway.app";
+const SITE_URL = "https://perkins-catering-production.up.railway.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

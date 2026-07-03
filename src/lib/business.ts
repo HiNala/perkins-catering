@@ -16,7 +16,7 @@ export const business = {
   chefName: "Austin Perkins",
   chefTitle: "Executive Chef & Owner",
   founded: 2011,
-  url: "https://perkins-catering.up.railway.app",
+  url: "https://perkins-catering-production.up.railway.app",
 } as const;
 
 export interface NavItem {

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Menu — Seasonal Catering Menu",
   description:
     "Explore Perkins Catering Co.'s seasonal catering menu: salads, soups, appetizers, and entrées crafted with locally sourced ingredients. Every menu is hand-crafted for your event.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/menu" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/menu" },
 };
 
 export default function MenuPage() {

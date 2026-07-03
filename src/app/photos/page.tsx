@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Photo Gallery — Events & Cuisine",
   description:
     "Browse photos of Perkins Catering Co.'s catered events, beautifully plated dishes, and memorable celebrations across Napa, Sonoma, and Marin counties.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/photos" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/photos" },
 };
 
 const galleryImages = [
@@ -32,7 +32,7 @@ export default function PhotosPage() {
           name: "Perkins Catering Co. Photo Gallery",
           image: galleryImages.map((img) => ({
             "@type": "ImageObject",
-            contentUrl: `https://perkins-catering.up.railway.app${img.src}`,
+            contentUrl: `https://perkins-catering-production.up.railway.app${img.src}`,
             description: img.alt,
           })),
         }}

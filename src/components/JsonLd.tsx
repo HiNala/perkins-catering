@@ -18,14 +18,14 @@ export function businessJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "CateringService",
-    "@id": "https://perkins-catering.up.railway.app/#business",
+    "@id": "https://perkins-catering-production.up.railway.app/#business",
     name: "Perkins Catering Co.",
     description:
       "Farm-to-table catering in Napa, Sonoma, and Marin counties. Restaurant-quality dishes for weddings, corporate events, and private gatherings.",
     telephone: "+1-707-981-7822",
     email: "reservations@perkinscateringco.com",
-    url: "https://perkins-catering.up.railway.app",
-    image: "https://perkins-catering.up.railway.app/images/og-image.png",
+    url: "https://perkins-catering-production.up.railway.app",
+    image: "https://perkins-catering-production.up.railway.app/images/og-image.png",
     priceRange: "$$$",
     areaServed: [
       { "@type": "AdministrativeArea", name: "Napa County" },

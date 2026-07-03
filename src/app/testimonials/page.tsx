@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Testimonials — Client Reviews",
   description:
     "Read what clients say about Perkins Catering Co. From wineries to weddings to corporate events, our clients rave about the food, service, and professionalism.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/testimonials" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/testimonials" },
 };
 
 export default function TestimonialsPage() {

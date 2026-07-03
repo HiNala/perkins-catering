@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Events — Weddings, Corporate & Private Gatherings",
   description:
     "Perkins Catering Co. caters weddings, corporate events, and private gatherings across Napa, Sonoma, and Marin counties. Custom menus, expert service, and restaurant-quality cuisine.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/events" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/events" },
 };
 
 const eventTypes = [

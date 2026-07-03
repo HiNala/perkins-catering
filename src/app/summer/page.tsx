@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Summer Meals — Seasonal Pickup & Delivery",
   description:
     "Perkins Catering Co.'s summer meal program offers chef-prepared seasonal dishes for pickup at Imagery Winery in Glen Ellen, CA. Delivery available on request.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/summer" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/summer" },
 };
 
 const summerMeals = [

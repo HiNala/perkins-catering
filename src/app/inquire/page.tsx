@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Inquire — Start Your Catering Inquiry",
   description:
     "Tell us about your event and we'll craft a custom catering proposal. Multi-step inquiry form for weddings, corporate events, and private gatherings in Napa, Sonoma, and Marin counties.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/inquire" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/inquire" },
 };
 
 export default function InquirePage() {

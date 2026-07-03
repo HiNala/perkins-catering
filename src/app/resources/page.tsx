@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Resources — Catering Tips & FAQ",
   description:
     "Helpful resources for planning your catered event. FAQ, tips for choosing a caterer, seasonal ingredient guides, and event planning advice from Perkins Catering Co.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/resources" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/resources" },
 };
 
 const planningTips = [

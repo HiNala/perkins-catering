@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Cost & Pricing — Catering Investment Guide",
   description:
     "Understand the investment for catering with Perkins Catering Co. Pricing varies by menu, guest count, and service style. Every quote is custom-crafted for your event.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/cost" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/cost" },
 };
 
 const pricingTiers = [

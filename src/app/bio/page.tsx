@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Chef Austin Perkins — Executive Chef & Owner",
   description:
     "Meet Executive Chef Austin Perkins, founder of Perkins Catering Co. From Petaluma roots to Michelin-recommended chef at Nick's Cove, Austin brings restaurant-quality cuisine to every event.",
-  alternates: { canonical: "https://perkins-catering.up.railway.app/bio" },
+  alternates: { canonical: "https://perkins-catering-production.up.railway.app/bio" },
 };
 
 const timeline = [
