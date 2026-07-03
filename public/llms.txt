@@ -1,0 +1,22 @@
+# Perkins Catering Co.
+
+> Farm-to-table catering in Napa, Sonoma, and Marin counties. Led by Executive Chef Austin Perkins, we craft custom menus for weddings, corporate events, and private gatherings using locally sourced ingredients.
+
+## Pages
+- [Home](/): Overview of Perkins Catering Co. — services, chef bio, testimonials, service area
+- [Chef](/bio): Executive Chef Austin Perkins — career history, Michelin-recommended credentials, culinary philosophy
+- [Menu](/menu): Seasonal catering menu — salads, soups, appetizers, entrées with locally sourced ingredients
+- [Photos](/photos): Photo gallery of catered events and cuisine
+- [Events](/events): Event types — weddings, corporate events, private dinners with planning process
+- [Summer](/summer): Summer meal program — pickup at Imagery Winery, Glen Ellen CA, delivery available
+- [Inquire](/inquire): Multi-step catering inquiry and quote request form
+- [Testimonials](/testimonials): Client reviews and testimonials
+- [Cost](/cost): Catering pricing guide and investment tiers
+- [Resources](/resources): Event planning tips and FAQ
+- [Contact](/contact): Contact information — phone, email, service area
+
+## Business Info
+- Phone: 707-981-7822
+- Email: reservations@perkinscateringco.com
+- Service Area: Napa County, Sonoma County, Marin County
+- Chef: Austin Perkins, Executive Chef & Owner
