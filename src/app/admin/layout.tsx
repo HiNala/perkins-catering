@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { verifySession } from "@/lib/dal";
 import { AdminNav } from "@/components/admin/AdminNav";
 
@@ -13,11 +12,6 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   const session = await verifySession();
-
-  // Double-check authorization (proxy already does an optimistic check)
-  if (!session?.userId) {
-    redirect("/login");
-  }
 
   return (
     <div className="min-h-screen bg-cream-dark flex flex-col lg:flex-row">

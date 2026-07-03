@@ -111,7 +111,7 @@ export function InquiriesList({
                   </div>
                   <div className="text-right flex-shrink-0">
                     <p className="text-xs text-stone">
-                      {new Date(item.submittedAt).toLocaleDateString()}
+                      {new Date(item.submittedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                     </p>
                     <p className="text-[10px] text-stone-light mt-0.5">
                       {isExpanded ? "▲ Hide" : "▼ Details"}

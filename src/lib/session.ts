@@ -14,8 +14,11 @@ export interface SessionPayload {
   expiresAt: number;
 }
 
-const SECRET = process.env.AUTH_SECRET || "dev-insecure-secret-change-me";
-const encodedKey = new TextEncoder().encode(SECRET);
+const SECRET = process.env.AUTH_SECRET;
+if (!SECRET) {
+  console.warn("[session] AUTH_SECRET not set — using insecure dev fallback.");
+}
+const encodedKey = new TextEncoder().encode(SECRET || "dev-insecure-secret-change-me");
 
 const SESSION_COOKIE = "perkins_session";
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days

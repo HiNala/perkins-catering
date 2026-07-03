@@ -4,7 +4,13 @@ import { InquiriesList } from "@/components/admin/InquiriesList";
 export const dynamic = "force-dynamic";
 
 export default async function InquiriesPage() {
-  const [inquiries, quotes] = await Promise.all([getInquiries(), getQuotes()]);
+  let inquiries: Awaited<ReturnType<typeof getInquiries>> = [];
+  let quotes: Awaited<ReturnType<typeof getQuotes>> = [];
+  try {
+    [inquiries, quotes] = await Promise.all([getInquiries(), getQuotes()]);
+  } catch (error) {
+    console.error("[admin/inquiries] Failed to fetch:", error);
+  }
 
   return (
     <div className="space-y-6">

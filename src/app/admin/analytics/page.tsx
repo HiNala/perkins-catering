@@ -3,7 +3,12 @@ import { getAnalyticsEvents } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export default async function AnalyticsPage() {
-  const events = await getAnalyticsEvents();
+  let events: Awaited<ReturnType<typeof getAnalyticsEvents>> = [];
+  try {
+    events = await getAnalyticsEvents();
+  } catch (error) {
+    console.error("[admin/analytics] Failed to fetch events:", error);
+  }
   const pageviews = events.filter((e) => e.type === "pageview");
 
   // Pageviews over the last 14 days

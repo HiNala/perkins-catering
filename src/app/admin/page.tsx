@@ -49,12 +49,25 @@ function StatCard({
 }
 
 export default async function AdminDashboard() {
-  const [summary, inquiries, quotes, posts] = await Promise.all([
-    getAnalyticsSummary(),
-    getInquiries(),
-    getQuotes(),
-    getBlogPostsAdmin(),
-  ]);
+  let summary: Awaited<ReturnType<typeof getAnalyticsSummary>> = {
+    totalPageviews: 0,
+    uniquePaths: 0,
+    recentEvents: [],
+  };
+  let inquiries: Awaited<ReturnType<typeof getInquiries>> = [];
+  let quotes: Awaited<ReturnType<typeof getQuotes>> = [];
+  let posts: Awaited<ReturnType<typeof getBlogPostsAdmin>> = [];
+
+  try {
+    [summary, inquiries, quotes, posts] = await Promise.all([
+      getAnalyticsSummary(),
+      getInquiries(),
+      getQuotes(),
+      getBlogPostsAdmin(),
+    ]);
+  } catch (error) {
+    console.error("[admin] Failed to fetch dashboard data:", error);
+  }
 
   const recentInquiries = [...inquiries, ...quotes]
     .sort((a, b) => (a.submittedAt < b.submittedAt ? 1 : -1))
@@ -126,7 +139,7 @@ export default async function AdminDashboard() {
                     </span>
                   </div>
                   <span className="text-stone text-xs flex-shrink-0 ml-2">
-                    {new Date(event.timestamp).toLocaleDateString()}
+                    {new Date(event.timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                   </span>
                 </li>
               ))}

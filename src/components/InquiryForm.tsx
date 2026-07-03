@@ -96,6 +96,10 @@ export function InquiryForm() {
       if (!data.guestCount) newErrors.guestCount = "Please estimate your guest count";
     }
 
+    if (stepNum === 2 && formType === "quote") {
+      if (!data.budget) newErrors.budget = "Budget range is required for quote requests";
+    }
+
     if (stepNum === 3) {
       if (!data.firstName.trim()) newErrors.firstName = "First name is required";
       if (!data.lastName.trim()) newErrors.lastName = "Last name is required";
@@ -448,9 +452,10 @@ export function InquiryForm() {
                 </button>
               ))}
             </div>
+            {errors.budget && (
+              <p className="text-sm text-red-500 mt-2">{errors.budget}</p>
+            )}
           </div>
-
-          {/* Dietary restrictions */}
           <div>
             <label htmlFor="dietary" className="block text-sm font-medium mb-2">
               Dietary Restrictions or Preferences

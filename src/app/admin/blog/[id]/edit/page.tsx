@@ -15,7 +15,12 @@ export default async function EditBlogPostPage({
   const id = parseInt(idStr, 10);
   if (Number.isNaN(id)) notFound();
 
-  const post = await getBlogPostById(id);
+  let post: Awaited<ReturnType<typeof getBlogPostById>> = null;
+  try {
+    post = await getBlogPostById(id);
+  } catch (error) {
+    console.error("[admin/blog/edit] Failed to fetch post:", error);
+  }
   if (!post) notFound();
 
   const updateAction = updatePost.bind(null, id);

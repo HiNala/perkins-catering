@@ -52,7 +52,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getBlogPost(slug);
+  let post: Awaited<ReturnType<typeof getBlogPost>> = null;
+  try {
+    post = await getBlogPost(slug);
+  } catch (error) {
+    console.error("[blog/[slug]] Failed to fetch post:", error);
+    notFound();
+  }
   if (!post || post.status !== "published") notFound();
 
   // Fetch related posts (latest 3, excluding current)

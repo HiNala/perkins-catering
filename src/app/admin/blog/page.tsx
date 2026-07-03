@@ -5,7 +5,12 @@ import { DeletePostButton } from "@/components/admin/DeletePostButton";
 export const dynamic = "force-dynamic";
 
 export default async function AdminBlogPage() {
-  const posts = await getBlogPostsAdmin();
+  let posts: Awaited<ReturnType<typeof getBlogPostsAdmin>> = [];
+  try {
+    posts = await getBlogPostsAdmin();
+  } catch (error) {
+    console.error("[admin/blog] Failed to fetch posts:", error);
+  }
 
   return (
     <div className="space-y-6">
@@ -55,7 +60,7 @@ export default async function AdminBlogPage() {
                   </span>
                 </div>
                 <p className="text-xs text-stone mt-1">
-                  /{post.slug} · {new Date(post.publishedAt).toLocaleDateString()} · {post.author}
+                  /{post.slug} · {new Date(post.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · {post.author}
                 </p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">

@@ -1,0 +1,17 @@
+fix: hydration, error handling, quote form validation, and security hardening
+
+- Fix hydration mismatch: add explicit en-US locale to toLocaleDateString()
+  in client components (InquiriesList, admin/blog)
+- Add budget validation to quote form (client-side) matching server schema
+- Add DB error handling to all admin pages and blog post page (graceful
+  fallback instead of 500 errors when DB is unavailable)
+- Warn when AUTH_SECRET not set (instead of throwing at build time)
+- Fix .env.example SITE_URL to match actual Railway domain
+- Add ADMIN_EMAIL/ADMIN_PASSWORD to .env.example
+- Remove redundant session check in admin layout (verifySession already
+  redirects)
+- Fix date formatting in admin dashboard for consistency
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>
