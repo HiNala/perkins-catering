@@ -31,6 +31,7 @@ export const navigation: NavItem[] = [
   { label: "Photos", href: "/photos" },
   { label: "Events", href: "/events" },
   { label: "Summer", href: "/summer" },
+  { label: "Blog", href: "/blog" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Resources", href: "/resources" },
   { label: "Inquire", href: "/inquire", highlight: true },
@@ -45,6 +46,7 @@ export const footerNav = {
   ],
   more: [
     { label: "Summer Meals", href: "/summer" },
+    { label: "Blog", href: "/blog" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "Cost & Pricing", href: "/cost" },
     { label: "Resources", href: "/resources" },

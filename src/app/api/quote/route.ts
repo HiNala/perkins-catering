@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { saveInquiry, type InquiryRecord } from "@/lib/db";
+import { saveQuote, type InquiryRecord } from "@/lib/db";
 import { sendEmail, buildInquiryEmail } from "@/lib/email";
 import { business } from "@/lib/business";
 
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
       ...data,
       newsletter: data.newsletter,
     };
-    await saveInquiry(record);
+    await saveQuote(record);
 
     // Send email notification
     const { subject, html } = buildInquiryEmail(data);
