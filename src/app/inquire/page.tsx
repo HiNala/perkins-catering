@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -25,16 +26,27 @@ export default function InquirePage() {
         }}
       />
 
-      {/* Header */}
-      <section className="pt-32 pb-12 bg-charcoal text-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      {/* Header with hero image */}
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/inquire-hero.jpg"
+            alt="Catered event setup by Perkins Catering Co."
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-charcoal/70" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="heading-uppercase text-sm text-sage-light mb-4">
             Let&rsquo;s Plan Something Extraordinary
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-cream mb-4">
             Start an Inquiry
           </h1>
-          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/80 max-w-2xl mx-auto leading-relaxed">
             Tell us about your event. The more we know, the better we can craft
             a custom menu and proposal tailored to your vision.
           </p>

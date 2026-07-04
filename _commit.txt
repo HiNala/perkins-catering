@@ -1,0 +1,35 @@
+feat: AI-generated images, lead capture popup, inline lead forms
+
+Images:
+- Generate hero background with OpenAI gpt-image-1 (14KB -> 2.8MB)
+- Generate OG social share image (1.6KB -> 1.7MB)
+- Generate logo.png for JSON-LD and branding
+- Replace gallery 07 and 08 (300x200 -> 1024x1024 high quality)
+- Wire up inquire-hero.jpg on inquire page with overlay
+
+Lead capture popup:
+- Exit-intent popup triggers when mouse leaves top of page
+- Timed popup triggers after 30 seconds
+- Captures name, phone, email, and optional event type
+- Submits to /api/inquiry endpoint
+- sessionStorage prevents repeat shows within session
+- Suppressed on admin/login/signup routes
+- Sage green header with conversion-focused copy
+- Success state with personalized confirmation
+
+Inline quick lead forms:
+- New QuickLeadForm component (name + phone + email + event type)
+- Added to /cost page with benefits list and form side-by-side
+- Added to /events page with planning CTA
+- Added to /menu page with custom menu CTA
+- Added to /summer page with summer event CTA
+- All forms submit to /api/inquiry and show success state
+
+Inquiry form improvements:
+- Phone number now required (was optional)
+- Phone validation: must be at least 10 digits
+- Visual error styling on phone field
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
+import { QuickLeadForm } from "@/components/QuickLeadForm";
 import { JsonLd } from "@/components/JsonLd";
 import { menu, sampleMenus } from "@/lib/menu";
 import { SITE_URL } from "@/lib/config";
@@ -132,6 +133,23 @@ export default function MenuPage() {
           <Button href="/inquire" size="lg">
             Request a Custom Menu
           </Button>
+        </div>
+      </Section>
+
+      {/* Inline lead capture */}
+      <Section background="white">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div>
+            <SectionHeading
+              eyebrow="Custom Menu"
+              title="Want a Menu Crafted Just for You?"
+              subtitle="These samples are just a starting point. Tell us about your event and Chef Austin will design a personalized menu using the freshest seasonal ingredients."
+            />
+          </div>
+          <QuickLeadForm
+            title="Request a Custom Menu"
+            subtitle="We'll call you within 24 hours to start crafting your perfect menu."
+          />
         </div>
       </Section>
 

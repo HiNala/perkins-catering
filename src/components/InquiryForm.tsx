@@ -112,6 +112,11 @@ export function InquiryForm() {
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
         newErrors.email = "Please enter a valid email address";
       }
+      if (!data.phone.trim()) {
+        newErrors.phone = "Phone number is required";
+      } else if (data.phone.replace(/\D/g, "").length < 10) {
+        newErrors.phone = "Please enter a valid phone number";
+      }
     }
 
     setErrors(newErrors);
@@ -576,7 +581,7 @@ export function InquiryForm() {
           {/* Phone */}
           <div>
             <label htmlFor="phone" className="block text-sm font-medium mb-2">
-              Phone Number
+              Phone Number <span className="text-sage">*</span>
             </label>
             <input
               id="phone"
@@ -584,8 +589,14 @@ export function InquiryForm() {
               placeholder="(707) 555-0100"
               value={data.phone}
               onChange={(e) => update("phone", e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border-2 border-border bg-white text-charcoal transition-colors focus:outline-none focus:border-sage"
+              className={cn(
+                "w-full px-4 py-3 rounded-lg border-2 bg-white text-charcoal transition-colors focus:outline-none",
+                errors.phone ? "border-red-300" : "border-border focus:border-sage"
+              )}
             />
+            {errors.phone && (
+              <p className="text-sm text-red-500 mt-1">{errors.phone}</p>
+            )}
           </div>
 
           {/* Newsletter */}

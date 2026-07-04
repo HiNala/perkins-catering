@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
+import { QuickLeadForm } from "@/components/QuickLeadForm";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/config";
 
@@ -160,6 +161,23 @@ export default function EventsPage() {
               </p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Inline lead capture */}
+      <Section background="cream">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div>
+            <SectionHeading
+              eyebrow="Start Planning"
+              title="Tell Us About Your Event"
+              subtitle="Whether it's an intimate dinner for 12 or a grand celebration for 300, Chef Austin will craft a custom menu just for you. Leave your info and we'll call within 24 hours."
+            />
+          </div>
+          <QuickLeadForm
+            title="Plan Your Event"
+            subtitle="Get a free consultation with Chef Austin."
+          />
         </div>
       </Section>
 

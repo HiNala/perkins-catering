@@ -3,6 +3,7 @@ import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { CTABanner } from "@/components/CTABanner";
+import { QuickLeadForm } from "@/components/QuickLeadForm";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/config";
 
@@ -188,6 +189,37 @@ export default function CostPage() {
               </p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Inline lead capture form */}
+      <Section background="cream">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div>
+            <SectionHeading
+              eyebrow="Get Your Custom Quote"
+              title="Ready for a Personalized Proposal?"
+              subtitle="Leave your contact info and Chef Austin will personally call you within 24 hours with a custom quote tailored to your event."
+            />
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-sage flex-shrink-0" />
+                <span className="text-base text-charcoal/80">No obligation, completely free</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-sage flex-shrink-0" />
+                <span className="text-base text-charcoal/80">Custom menu crafted for your event</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-sage flex-shrink-0" />
+                <span className="text-base text-charcoal/80">Response within 24 hours, guaranteed</span>
+              </div>
+            </div>
+          </div>
+          <QuickLeadForm
+            title="Get Your Free Quote"
+            subtitle="Fill this out and we'll call you with a custom proposal."
+          />
         </div>
       </Section>
 

@@ -3,6 +3,7 @@ import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { CTABanner } from "@/components/CTABanner";
+import { QuickLeadForm } from "@/components/QuickLeadForm";
 import { JsonLd } from "@/components/JsonLd";
 import { business } from "@/lib/business";
 import { SITE_URL } from "@/lib/config";
@@ -149,6 +150,23 @@ export default function SummerPage() {
               </Button>
             </div>
           </Card>
+        </div>
+      </Section>
+
+      {/* Inline lead capture */}
+      <Section background="cream">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+          <div>
+            <SectionHeading
+              eyebrow="Summer Catering"
+              title="Planning a Summer Event?"
+              subtitle="From backyard BBQs to vineyard weddings, let Chef Austin craft the perfect summer menu. Leave your info and we'll call you within 24 hours."
+            />
+          </div>
+          <QuickLeadForm
+            title="Plan Your Summer Event"
+            subtitle="Free consultation with Chef Austin."
+          />
         </div>
       </Section>
 
