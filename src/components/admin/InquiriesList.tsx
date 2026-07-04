@@ -1,10 +1,19 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { InquiryRecord } from "@/lib/db";
 import { cn } from "@/lib/utils";
 
 type FilterType = "all" | "inquiry" | "quote";
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
 
 export function InquiriesList({
   inquiries,
@@ -13,9 +22,15 @@ export function InquiriesList({
   inquiries: InquiryRecord[];
   quotes: InquiryRecord[];
 }) {
+  const [mounted, setMounted] = useState(false);
   const [filter, setFilter] = useState<FilterType>("all");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const all = useMemo(
     () => [...inquiries, ...quotes].sort((a, b) => (a.submittedAt < b.submittedAt ? 1 : -1)),
@@ -111,7 +126,7 @@ export function InquiriesList({
                   </div>
                   <div className="text-right flex-shrink-0">
                     <p className="text-xs text-stone">
-                      {new Date(item.submittedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                      {mounted ? formatDate(item.submittedAt) : ""}
                     </p>
                     <p className="text-[10px] text-stone-light mt-0.5">
                       {isExpanded ? "▲ Hide" : "▼ Details"}

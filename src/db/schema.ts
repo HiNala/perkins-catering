@@ -9,6 +9,7 @@ import {
   timestamp,
   boolean,
   serial,
+  index,
 } from "drizzle-orm/pg-core";
 
 /* ---------------------------------- Inquiries --------------------------------- */
@@ -30,7 +31,9 @@ export const inquiries = pgTable("inquiries", {
   phone: text("phone").default("").notNull(),
   newsletter: boolean("newsletter").default(true).notNull(),
   submittedAt: timestamp("submitted_at", { withTimezone: true }).notNull(),
-});
+}, (table) => [
+  index("inquiries_submitted_at_idx").on(table.submittedAt),
+]);
 
 /* ----------------------------------- Quotes ----------------------------------- */
 
@@ -51,7 +54,9 @@ export const quotes = pgTable("quotes", {
   phone: text("phone").default("").notNull(),
   newsletter: boolean("newsletter").default(true).notNull(),
   submittedAt: timestamp("submitted_at", { withTimezone: true }).notNull(),
-});
+}, (table) => [
+  index("quotes_submitted_at_idx").on(table.submittedAt),
+]);
 
 /* ------------------------------ Analytics events ------------------------------ */
 
@@ -61,7 +66,10 @@ export const analyticsEvents = pgTable("analytics_events", {
   path: text("path").notNull(),
   referrer: text("referrer"),
   timestamp: timestamp("timestamp", { withTimezone: true }).notNull(),
-});
+}, (table) => [
+  index("analytics_timestamp_idx").on(table.timestamp),
+  index("analytics_type_idx").on(table.type),
+]);
 
 /* --------------------------------- Blog posts --------------------------------- */
 
@@ -81,7 +89,10 @@ export const blogPosts = pgTable("blog_posts", {
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .defaultNow()
     .notNull(),
-});
+}, (table) => [
+  index("blog_posts_status_idx").on(table.status),
+  index("blog_posts_published_at_idx").on(table.publishedAt),
+]);
 
 /* ----------------------------------- Users ------------------------------------ */
 

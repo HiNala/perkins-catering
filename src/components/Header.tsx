@@ -134,6 +134,7 @@ export function Header() {
             ))}
             <a
               href={business.phoneHref}
+              onClick={closeMobileMenu}
               className="px-4 py-3 text-sm font-medium text-stone hover:text-sage"
             >
               {business.phone}

@@ -1,4 +1,5 @@
 import { Button } from "./Button";
+import { business } from "@/lib/business";
 
 interface CTABannerProps {
   title?: string;
@@ -28,8 +29,8 @@ export function CTABanner({
           <Button href="/inquire" variant="secondary" size="lg" className="bg-white text-sage hover:bg-cream">
             Start an Inquiry
           </Button>
-          <Button href="tel:+17079817822" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-sage">
-            Call 707-981-7822
+          <Button href={business.phoneHref} variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-sage">
+            Call {business.phone}
           </Button>
         </div>
       </div>
