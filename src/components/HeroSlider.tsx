@@ -11,15 +11,15 @@ interface HeroSlide {
 const slides: HeroSlide[] = [
   {
     src: "/images/hero/wedding-garden-table.jpg",
-    alt: "Elegant outdoor wedding table set beneath trees with floral arrangements and fine tableware",
+    alt: "Long outdoor dining table set for a catered event with elegant floral centerpieces and green tableware",
   },
   {
     src: "/images/hero/sunlit-elegant-table.jpg",
-    alt: "Sunlit outdoor dining table with elegant place settings, glassware, and floral centerpieces",
+    alt: "Luxurious outdoor table setting with red wine, gourmet dishes, and fine glassware",
   },
   {
     src: "/images/hero/outdoor-celebration-table.jpg",
-    alt: "Beautifully decorated outdoor celebration table with elegant tableware and floral decor",
+    alt: "Elegant outdoor dining table with floral centerpiece for a wedding celebration",
   },
 ];
 
