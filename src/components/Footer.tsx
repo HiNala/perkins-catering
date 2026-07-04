@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { business, footerNav } from "@/lib/business";
+import { imageUrl } from "@/lib/s3";
 
 export function Footer() {
   return (
@@ -11,7 +12,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/images/logo.png"
+                src={imageUrl("logo.png")}
                 alt="Perkins Catering Co. logo"
                 width={48}
                 height={48}

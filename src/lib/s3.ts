@@ -40,3 +40,24 @@ export const s3Client = isS3Configured
       forcePathStyle: urlStyle === "path",
     })
   : null;
+
+/**
+ * Returns the URL for an image stored in S3-compatible storage.
+ *
+ * When S3 is configured (prod or local MinIO), images are served via
+ * the /api/images proxy route which fetches from the bucket.
+ *
+ * When S3 is NOT configured, falls back to serving from the public/
+ * directory so the site still works without a bucket.
+ *
+ * @param key - S3 object key (e.g., "hero/wedding-garden-table.jpg")
+ * @returns URL string for use in <Image src=...> or <img src=...>
+ */
+export function imageUrl(key: string): string {
+  const cleanKey = key.replace(/^\/+/, "");
+  if (isS3Configured) {
+    return `/api/images?path=${encodeURIComponent(cleanKey)}`;
+  }
+  // Fallback: serve from public/images/
+  return `/images/${cleanKey}`;
+}

@@ -79,24 +79,39 @@ async function main() {
   console.log(`Endpoint: ${endpoint}`);
   console.log();
 
-  const files = fs.readdirSync(absDir).filter((f) => {
-    const ext = path.extname(f).toLowerCase();
-    return ext in CONTENT_TYPES;
-  });
+  // Recursively find all image files
+  const imageRoot = path.resolve("public/images");
+  function findImages(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files = [];
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        files.push(...findImages(fullPath));
+      } else {
+        const ext = path.extname(entry.name).toLowerCase();
+        if (ext in CONTENT_TYPES) {
+          files.push(fullPath);
+        }
+      }
+    }
+    return files;
+  }
+
+  const files = findImages(absDir);
 
   if (files.length === 0) {
     console.log("No image files found.");
     return;
   }
 
-  for (const file of files) {
-    const fullPath = path.join(absDir, file);
+  for (const fullPath of files) {
     // Key = relative path from public/images/ (e.g., "hero/wedding-garden-table.jpg")
-    const key = path.relative(path.resolve("public/images"), fullPath).replace(/\\/g, "/");
+    const key = path.relative(imageRoot, fullPath).replace(/\\/g, "/");
     try {
       await uploadFile(fullPath, key);
     } catch (err) {
-      console.error(`  FAILED: ${file} — ${err.message}`);
+      console.error(`  FAILED: ${key} — ${err.message}`);
     }
   }
 

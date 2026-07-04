@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { pageMetadata, breadcrumbItems } from "@/lib/seo";
+import { imageUrl } from "@/lib/s3";
 
 export const metadata = pageMetadata({
   title: "Chef Austin Perkins — Executive Chef & Owner",
@@ -100,7 +101,7 @@ export default function BioPage() {
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/bio/chef-austin-perkins.png"
+                src={imageUrl("bio/chef-austin-perkins.png")}
                 alt="Executive Chef Austin Perkins"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

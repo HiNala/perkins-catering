@@ -4,6 +4,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/config";
 import { pageMetadata, breadcrumbItems } from "@/lib/seo";
+import { imageUrl } from "@/lib/s3";
 
 export const metadata = pageMetadata({
   title: "Photo Gallery — Events & Cuisine",
@@ -13,14 +14,14 @@ export const metadata = pageMetadata({
 });
 
 const galleryImages = [
-  { src: "/images/gallery/gallery-01.jpg", alt: "Catered event dish by Perkins Catering Co." },
-  { src: "/images/gallery/gallery-02.jpg", alt: "Beautifully plated catering presentation" },
-  { src: "/images/gallery/gallery-03.jpg", alt: "Perkins Catering Co. event cuisine" },
-  { src: "/images/gallery/gallery-04.jpg", alt: "Catered wedding dish with local ingredients" },
-  { src: "/images/gallery/gallery-05.jpg", alt: "Elegant catering setup by Perkins Catering" },
-  { src: "/images/gallery/gallery-06.jpg", alt: "Farm-to-table catering presentation" },
-  { src: "/images/gallery/gallery-07.jpg", alt: "Perkins Catering Co. plated dish" },
-  { src: "/images/gallery/gallery-08.jpg", alt: "Catered event food by Perkins Catering Co." },
+  { src: imageUrl("gallery/gallery-01.jpg"), alt: "Catered event dish by Perkins Catering Co." },
+  { src: imageUrl("gallery/gallery-02.jpg"), alt: "Beautifully plated catering presentation" },
+  { src: imageUrl("gallery/gallery-03.jpg"), alt: "Perkins Catering Co. event cuisine" },
+  { src: imageUrl("gallery/gallery-04.jpg"), alt: "Catered wedding dish with local ingredients" },
+  { src: imageUrl("gallery/gallery-05.jpg"), alt: "Elegant catering setup by Perkins Catering" },
+  { src: imageUrl("gallery/gallery-06.jpg"), alt: "Farm-to-table catering presentation" },
+  { src: imageUrl("gallery/gallery-07.jpg"), alt: "Perkins Catering Co. plated dish" },
+  { src: imageUrl("gallery/gallery-08.jpg"), alt: "Catered event food by Perkins Catering Co." },
 ];
 
 export default function PhotosPage() {

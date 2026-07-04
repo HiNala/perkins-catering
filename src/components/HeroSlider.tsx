@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
+import { imageUrl } from "@/lib/s3";
 
 interface HeroSlide {
   src: string;
@@ -10,15 +11,15 @@ interface HeroSlide {
 
 const slides: HeroSlide[] = [
   {
-    src: "/images/hero/wedding-garden-table.jpg",
+    src: imageUrl("hero/wedding-garden-table.jpg"),
     alt: "Long outdoor dining table set for a catered event with elegant floral centerpieces and green tableware",
   },
   {
-    src: "/images/hero/sunlit-elegant-table.jpg",
+    src: imageUrl("hero/sunlit-elegant-table.jpg"),
     alt: "Luxurious outdoor table setting with red wine, gourmet dishes, and fine glassware",
   },
   {
-    src: "/images/hero/outdoor-celebration-table.jpg",
+    src: imageUrl("hero/outdoor-celebration-table.jpg"),
     alt: "Elegant outdoor dining table with floral centerpiece for a wedding celebration",
   },
 ];

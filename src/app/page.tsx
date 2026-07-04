@@ -10,6 +10,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { JsonLd, businessJsonLd, faqJsonLd } from "@/components/JsonLd";
 import { business, services, testimonials, faqs } from "@/lib/business";
 import { pageMetadata } from "@/lib/seo";
+import { imageUrl } from "@/lib/s3";
 
 export const metadata: Metadata = pageMetadata({
   title: "Perkins Catering Co. — Farm-to-Table Catering in Sonoma County",
@@ -102,7 +103,7 @@ export default function HomePage() {
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/bio/chef-austin-perkins.png"
+                src={imageUrl("bio/chef-austin-perkins.png")}
                 alt="Executive Chef Austin Perkins"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

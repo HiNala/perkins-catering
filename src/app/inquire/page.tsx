@@ -4,6 +4,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { InquiryForm } from "@/components/InquiryForm";
 import { pageMetadata, breadcrumbItems } from "@/lib/seo";
+import { imageUrl } from "@/lib/s3";
 
 export const metadata = pageMetadata({
   title: "Inquire — Start Your Catering Inquiry",
@@ -37,7 +38,7 @@ export default function InquirePage() {
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/inquire-hero.jpg"
+            src={imageUrl("inquire-hero.jpg")}
             alt="Catered event setup by Perkins Catering Co."
             fill
             priority
