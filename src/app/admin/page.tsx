@@ -28,7 +28,7 @@ function StatCard({
       } ${href ? "hover:-translate-y-0.5" : ""}`}
     >
       <p
-        className={`heading-uppercase text-xs mb-2 ${
+        className={`heading-uppercase text-sm mb-2 ${
           accent ? "text-white/80" : "text-stone"
         }`}
       >

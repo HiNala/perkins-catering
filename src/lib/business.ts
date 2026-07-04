@@ -19,6 +19,24 @@ export const business = {
   chefTitle: "Executive Chef & Owner",
   founded: 2011,
   url: SITE_URL,
+  // Geo — Sonoma County area (base of operations)
+  geo: {
+    latitude: 38.2919,
+    longitude: -122.4582,
+  },
+  address: {
+    streetAddress: "Glen Ellen, CA",
+    addressLocality: "Glen Ellen",
+    addressRegion: "CA",
+    postalCode: "95442",
+    addressCountry: "US",
+  },
+  // Service area cities for local SEO
+  serviceCities: [
+    "Santa Rosa", "Sonoma", "Petaluma", "Healdsburg", "Sebastopol",
+    "Glen Ellen", "Napa", "Calistoga", "St. Helena", "Yountville",
+    "San Rafael", "Novato", "Mill Valley", "Sausalito",
+  ],
 } as const;
 
 export interface NavItem {

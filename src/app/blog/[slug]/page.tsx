@@ -7,8 +7,9 @@ import { Section } from "@/components/Section";
 import { Markdown } from "@/components/Markdown";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/config";
+import { estimateReadTime, formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -62,6 +63,8 @@ export default async function BlogPostPage({ params }: Props) {
   }
   if (!post || post.status !== "published") notFound();
 
+  const readTime = estimateReadTime(post.content);
+
   // Fetch related posts (latest 3, excluding current)
   let related: Awaited<ReturnType<typeof getBlogPosts>> = [];
   try {
@@ -73,16 +76,28 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.excerpt,
-          datePublished: post.publishedAt,
-          author: { "@type": "Person", name: post.author },
-          url: `${SITE_URL}/blog/${post.slug}`,
-          image: post.coverImage || undefined,
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.publishedAt,
+            author: { "@type": "Person", name: post.author },
+            url: `${SITE_URL}/blog/${post.slug}`,
+            image: post.coverImage || undefined,
+            publisher: {
+              "@type": "Organization",
+              name: "Perkins Catering Co.",
+              url: SITE_URL,
+            },
+          },
+          breadcrumbJsonLd([
+            { name: "Home", url: SITE_URL },
+            { name: "Blog", url: `${SITE_URL}/blog` },
+            { name: post.title, url: `${SITE_URL}/blog/${post.slug}` },
+          ]),
+        ]}
       />
 
       {/* Hero */}
@@ -91,22 +106,19 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <Link
               href="/blog"
-              className="text-sm text-sage-light hover:text-sage transition-colors mb-6 inline-block"
+              className="text-base text-sage-light hover:text-sage transition-colors mb-6 inline-block"
             >
               ← All Posts
             </Link>
-            <p className="text-xs text-sage-light uppercase tracking-wider mb-4">
-              {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}{" "}
-              · {post.author}
-            </p>
+            <div className="flex items-center gap-3 mb-4 text-sm text-sage-light uppercase tracking-wider">
+              <span>{formatDate(post.publishedAt)}</span>
+              <span aria-hidden="true">·</span>
+              <span>{readTime} min read</span>
+            </div>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-4">
               {post.title}
             </h1>
-            <p className="text-lg text-cream/70 leading-relaxed">{post.excerpt}</p>
+            <p className="text-xl text-cream/70 leading-relaxed">{post.excerpt}</p>
           </div>
         </section>
 
@@ -127,15 +139,40 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Content */}
         <Section background="cream">
           <div className="mx-auto max-w-3xl">
+            {/* Author info bar */}
+            <div className="flex items-center gap-4 mb-10 pb-6 border-b border-border">
+              <div className="w-12 h-12 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0">
+                <span className="font-heading text-lg font-semibold text-sage">
+                  {post.author.charAt(0)}
+                </span>
+              </div>
+              <div>
+                <p className="font-heading text-lg font-semibold">{post.author}</p>
+                <p className="text-sm text-stone">Executive Chef & Owner</p>
+              </div>
+            </div>
+
             <Markdown content={post.content} />
 
-            <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-sm text-stone">
-                Written by {post.author}
-              </p>
-              <Button href="/inquire" variant="outline" size="sm">
-                Plan Your Event
-              </Button>
+            {/* Post footer CTA */}
+            <div className="mt-12 pt-8 border-t border-border">
+              <div className="rounded-2xl bg-sage/5 border border-sage/20 p-8 text-center">
+                <h3 className="font-heading text-2xl font-semibold mb-2">
+                  Planning an Event?
+                </h3>
+                <p className="text-base text-stone leading-relaxed mb-6">
+                  Let Chef Austin craft a custom menu for your wedding, corporate
+                  event, or private gathering in Napa, Sonoma, or Marin.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button href="/inquire" size="md">
+                    Start an Inquiry
+                  </Button>
+                  <Button href="/menu" variant="outline" size="md">
+                    View Our Menu
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </Section>
@@ -145,7 +182,7 @@ export default async function BlogPostPage({ params }: Props) {
       {related.length > 0 && (
         <Section background="white">
           <h2 className="font-heading text-2xl font-semibold mb-8">More from the Blog</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {related.map((rp) => (
               <Link
                 key={rp.id}
@@ -163,16 +200,19 @@ export default async function BlogPostPage({ params }: Props) {
                     />
                   </div>
                 )}
-                <div className="p-5">
-                  <p className="text-xs text-sage uppercase tracking-wider mb-2">
-                    {new Date(rp.publishedAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                    })}
+                <div className="p-6 flex flex-col flex-1">
+                  <p className="text-sm text-sage uppercase tracking-wider mb-2">
+                    {formatDate(rp.publishedAt, { month: "short", day: "numeric" })}
                   </p>
-                  <h3 className="font-heading text-lg font-semibold group-hover:text-sage transition-colors line-clamp-2">
+                  <h3 className="font-heading text-lg font-semibold group-hover:text-sage transition-colors line-clamp-2 mb-2">
                     {rp.title}
                   </h3>
+                  <p className="text-sm text-stone leading-relaxed line-clamp-2 flex-1">
+                    {rp.excerpt}
+                  </p>
+                  <p className="text-sm text-stone mt-3">
+                    {estimateReadTime(rp.content)} min read
+                  </p>
                 </div>
               </Link>
             ))}

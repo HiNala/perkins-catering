@@ -79,6 +79,8 @@ body {
   background: var(--color-cream);
   color: var(--color-charcoal);
   font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -87,6 +89,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Larger paragraph text for readability */
+p {
+  line-height: 1.75;
 }
 
 /* Uppercase heading utility (from design-kit tone) */

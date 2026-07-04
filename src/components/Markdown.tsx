@@ -32,10 +32,10 @@ export function Markdown({ content, className }: { content: string; className?: 
   const flushList = () => {
     if (listItems.length > 0) {
       blocks.push(
-        <ul key={`ul-${key++}`} className="space-y-2 my-5 pl-1">
+        <ul key={`ul-${key++}`} className="space-y-3 my-6 pl-1">
           {listItems.map((item, i) => (
-            <li key={i} className="flex gap-3 text-charcoal/80 leading-relaxed">
-              <span className="text-sage mt-2 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-sage" />
+            <li key={i} className="flex gap-3 text-lg text-charcoal/80 leading-relaxed">
+              <span className="text-sage mt-2.5 flex-shrink-0 w-2 h-2 rounded-full bg-sage" />
               <span>{renderInline(item)}</span>
             </li>
           ))}
@@ -51,14 +51,14 @@ export function Markdown({ content, className }: { content: string; className?: 
     if (line.startsWith("## ")) {
       flushList();
       blocks.push(
-        <h2 key={`h2-${key++}`} className="font-heading text-2xl sm:text-3xl font-semibold mt-10 mb-4 text-charcoal">
+        <h2 key={`h2-${key++}`} className="font-heading text-2xl sm:text-3xl font-semibold mt-12 mb-4 text-charcoal">
           {renderInline(line.slice(3))}
         </h2>
       );
     } else if (line.startsWith("### ")) {
       flushList();
       blocks.push(
-        <h3 key={`h3-${key++}`} className="font-heading text-xl sm:text-2xl font-semibold mt-8 mb-3 text-charcoal">
+        <h3 key={`h3-${key++}`} className="font-heading text-xl sm:text-2xl font-semibold mt-10 mb-3 text-charcoal">
           {renderInline(line.slice(4))}
         </h3>
       );
@@ -69,7 +69,7 @@ export function Markdown({ content, className }: { content: string; className?: 
     } else {
       flushList();
       blocks.push(
-        <p key={`p-${key++}`} className="text-charcoal/80 leading-relaxed mb-4">
+        <p key={`p-${key++}`} className="text-lg text-charcoal/80 leading-relaxed mb-5">
           {renderInline(line)}
         </p>
       );

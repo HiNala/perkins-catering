@@ -36,13 +36,13 @@ export default function MenuPage() {
       {/* Page header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-sage-light mb-4">
+          <p className="heading-uppercase text-sm text-sage-light mb-4">
             Seasonal · Local · Hand-Crafted
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
             Our Menu
           </h1>
-          <p className="text-lg text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
             Every menu is hand-crafted by our chefs for each and every event.
             We use only in-season produce and the best available local proteins
             to make every event truly one of a kind.

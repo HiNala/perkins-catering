@@ -73,13 +73,13 @@ export default function EventsPage() {
       {/* Header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-sage-light mb-4">
+          <p className="heading-uppercase text-sm text-sage-light mb-4">
             Every Event Is Unique
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
             Events We Cater
           </h1>
-          <p className="text-lg text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
             Our goal at Perkins Catering Co. is to make your event the best it
             can possibly be. Our chefs, led by Austin Perkins, have worked in
             many of the Bay Area&rsquo;s top 100 restaurants their entire careers.
@@ -96,7 +96,7 @@ export default function EventsPage() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className={idx % 2 === 1 ? "lg:order-2" : ""}>
-              <p className="heading-uppercase text-xs text-sage mb-3">
+              <p className="heading-uppercase text-sm text-sage mb-3">
                 {event.capacity}
               </p>
               <h2 className="font-heading text-3xl sm:text-4xl font-semibold mb-4">
@@ -123,7 +123,7 @@ export default function EventsPage() {
                   <p className="font-heading text-6xl font-semibold text-sage/40">
                     {event.capacity}
                   </p>
-                  <p className="heading-uppercase text-xs text-stone mt-2">
+                  <p className="heading-uppercase text-sm text-stone mt-2">
                     Guest Range
                   </p>
                 </div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteChrome } from "@/components/SiteChrome";
 import { Analytics } from "@/components/Analytics";
 import { SITE_URL } from "@/lib/config";
+import { business } from "@/lib/business";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-heading",
@@ -37,6 +38,16 @@ export const metadata: Metadata = {
     "Perkins Catering Co",
     "private chef Sonoma",
     "event catering wine country",
+    "wedding caterer Napa",
+    "wedding caterer Sonoma",
+    "corporate catering Marin",
+    "catering Santa Rosa",
+    "catering Petaluma",
+    "catering Healdsburg",
+    "catering Glen Ellen",
+    "wine country catering",
+    "Sonoma County caterer",
+    "Napa Valley catering",
   ],
   authors: [{ name: "Austin Perkins" }],
   creator: "Perkins Catering Co.",
@@ -77,6 +88,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+  },
+  other: {
+    "geo.region": "US-CA",
+    "geo.placename": "Sonoma County, California",
+    "geo.position": `${business.geo.latitude};${business.geo.longitude}`,
+    "ICBM": `${business.geo.latitude}, ${business.geo.longitude}`,
   },
 };
 

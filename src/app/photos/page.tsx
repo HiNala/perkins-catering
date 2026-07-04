@@ -42,13 +42,13 @@ export default function PhotosPage() {
       {/* Header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-sage-light mb-4">
+          <p className="heading-uppercase text-sm text-sage-light mb-4">
             A Visual Feast
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
             Photo Gallery
           </h1>
-          <p className="text-lg text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
             A glimpse of the events we&rsquo;ve catered and the dishes
             we&rsquo;ve crafted across wine country.
           </p>

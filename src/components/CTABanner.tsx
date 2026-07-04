@@ -22,7 +22,7 @@ export function CTABanner({
         <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4">
           {title}
         </h2>
-        <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+        <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
           {subtitle}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

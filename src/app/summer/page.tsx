@@ -57,7 +57,7 @@ export default function SummerPage() {
       {/* Header */}
       <section className="pt-32 pb-12 bg-sage text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-cream/80 mb-4">
+          <p className="heading-uppercase text-sm text-cream/80 mb-4">
             Seasonal · Fresh · To-Go
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
@@ -80,7 +80,7 @@ export default function SummerPage() {
         <div className="max-w-2xl mx-auto">
           {summerMeals.map((meal) => (
             <Card key={meal.title} className="text-center" hover={false}>
-              <p className="heading-uppercase text-xs text-sage mb-2">
+              <p className="heading-uppercase text-sm text-sage mb-2">
                 {meal.date}
               </p>
               <h3 className="font-heading text-2xl font-semibold mb-4">
@@ -90,7 +90,7 @@ export default function SummerPage() {
                 {meal.price} · {meal.priceNote}
               </div>
               <div className="border-t border-border pt-6">
-                <p className="heading-uppercase text-xs text-stone mb-4">
+                <p className="heading-uppercase text-sm text-stone mb-4">
                   Menu
                 </p>
                 <ul className="space-y-2">
@@ -120,15 +120,15 @@ export default function SummerPage() {
             </h3>
             <dl className="space-y-3">
               <div>
-                <dt className="heading-uppercase text-xs text-stone">Location</dt>
+                <dt className="heading-uppercase text-sm text-stone">Location</dt>
                 <dd className="text-charcoal/80 mt-1">{pickupInfo.location}</dd>
               </div>
               <div>
-                <dt className="heading-uppercase text-xs text-stone">Address</dt>
+                <dt className="heading-uppercase text-sm text-stone">Address</dt>
                 <dd className="text-charcoal/80 mt-1">{pickupInfo.address}</dd>
               </div>
               <div>
-                <dt className="heading-uppercase text-xs text-stone">Hours</dt>
+                <dt className="heading-uppercase text-sm text-stone">Hours</dt>
                 <dd className="text-charcoal/80 mt-1">{pickupInfo.hours}</dd>
               </div>
             </dl>

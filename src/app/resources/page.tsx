@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, faqJsonLd } from "@/components/JsonLd";
 import { faqs } from "@/lib/business";
 import { SITE_URL } from "@/lib/config";
 
@@ -35,31 +35,18 @@ const planningTips = [
 export default function ResourcesPage() {
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }}
-      />
+      <JsonLd data={faqJsonLd(faqs)} />
 
       {/* Header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-sage-light mb-4">
+          <p className="heading-uppercase text-sm text-sage-light mb-4">
             Guides & Tips
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
             Resources
           </h1>
-          <p className="text-lg text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
             Everything you need to plan a successful catered event, from
             frequently asked questions to expert planning tips.
           </p>
@@ -88,7 +75,7 @@ export default function ResourcesPage() {
                 <h3 className="font-heading text-lg font-semibold mb-2">
                   {tip.title}
                 </h3>
-                <p className="text-sm text-stone leading-relaxed">
+                <p className="text-base text-stone leading-relaxed">
                   {tip.text}
                 </p>
               </div>
@@ -121,7 +108,7 @@ export default function ResourcesPage() {
                 </span>
               </summary>
               <div className="px-6 pb-6 -mt-2">
-                <p className="text-charcoal/70 leading-relaxed">
+                <p className="text-base text-charcoal/70 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -137,7 +124,7 @@ export default function ResourcesPage() {
             eyebrow="Still Have Questions?"
             title="We're Here to Help"
           />
-          <p className="text-charcoal/80 leading-relaxed mb-8">
+          <p className="text-lg text-charcoal/80 leading-relaxed mb-8">
             Don&rsquo;t see your question answered? Reach out directly —
             we&rsquo;re happy to discuss your event and answer any questions
             you may have.

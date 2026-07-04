@@ -74,13 +74,13 @@ export default function BioPage() {
       {/* Hero */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-sage-light mb-4">
+          <p className="heading-uppercase text-sm text-sage-light mb-4">
             Executive Chef & Owner
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
             Austin Perkins
           </h1>
-          <p className="text-lg text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
             A culinary journey from Petaluma roots to Michelin-recommended chef,
             bringing restaurant-quality cuisine to every event.
           </p>
@@ -157,7 +157,7 @@ export default function BioPage() {
                 {/* Content */}
                 <div className="pl-12 sm:pl-0 sm:w-1/2 sm:px-8">
                   <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
-                    <p className="heading-uppercase text-xs text-sage mb-2">
+                    <p className="heading-uppercase text-sm text-sage mb-2">
                       {item.year}
                     </p>
                     <h3 className="font-heading text-lg font-semibold mb-2">

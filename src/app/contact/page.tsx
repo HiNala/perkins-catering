@@ -27,13 +27,13 @@ export default function ContactPage() {
       {/* Header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="heading-uppercase text-xs text-sage-light mb-4">
+          <p className="heading-uppercase text-sm text-sage-light mb-4">
             We&rsquo;d Love to Hear From You
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
             Contact
           </h1>
-          <p className="text-lg text-cream/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/70 max-w-2xl mx-auto leading-relaxed">
             Reach out by phone, email, or start a detailed inquiry. We respond
             to all inquiries within 24 hours.
           </p>
@@ -70,7 +70,7 @@ export default function ContactPage() {
             <h3 className="font-heading text-xl font-semibold mb-2">Email</h3>
             <a
               href={business.emailHref}
-              className="text-sage hover:text-sage-dark transition-colors break-all"
+              className="text-lg text-sage hover:text-sage-dark transition-colors break-all"
             >
               {business.email}
             </a>
@@ -82,13 +82,23 @@ export default function ContactPage() {
           <h3 className="font-heading text-xl font-semibold mb-4 text-center">
             Service Area
           </h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
             {business.serviceAreas.map((area) => (
               <span
                 key={area}
                 className="px-4 py-2 rounded-lg bg-sage/10 text-sage text-sm font-medium"
               >
                 {area}
+              </span>
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center gap-2">
+            {business.serviceCities.map((city) => (
+              <span
+                key={city}
+                className="px-3 py-1.5 rounded-full bg-cream-dark text-charcoal/70 text-sm"
+              >
+                {city}
               </span>
             ))}
           </div>
@@ -100,9 +110,11 @@ export default function ContactPage() {
             title="Planning an Event?"
             subtitle="Our detailed inquiry form helps us understand your needs and craft the perfect proposal."
           />
-          <Button href="/inquire" size="lg">
-            Start a Detailed Inquiry
-          </Button>
+          <div className="mt-6">
+            <Button href="/inquire" size="lg">
+              Start a Detailed Inquiry
+            </Button>
+          </div>
         </div>
       </Section>
 
