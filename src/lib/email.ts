@@ -15,6 +15,7 @@ interface EmailParams {
 
 export async function sendEmail({ to, subject, html, replyTo }: EmailParams): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Perkins Catering <onboarding@resend.dev>";
 
   if (!apiKey) {
     // No API key configured — log and return success so the form doesn't error
@@ -31,7 +32,7 @@ export async function sendEmail({ to, subject, html, replyTo }: EmailParams): Pr
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        from: "Perkins Catering <onboarding@resend.dev>",
+        from: fromEmail,
         to,
         subject,
         html,

@@ -4,12 +4,13 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { testimonials } from "@/lib/business";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Testimonials — Client Reviews",
   description:
     "Read what clients say about Perkins Catering Co. From wineries to weddings to corporate events, our clients rave about the food, service, and professionalism.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/testimonials" },
+  alternates: { canonical: `${SITE_URL}/testimonials` },
 };
 
 export default function TestimonialsPage() {

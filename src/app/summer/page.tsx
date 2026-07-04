@@ -5,12 +5,13 @@ import { Card } from "@/components/Card";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { business } from "@/lib/business";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Summer Meals — Seasonal Pickup & Delivery",
   description:
     "Perkins Catering Co.'s summer meal program offers chef-prepared seasonal dishes for pickup at Imagery Winery in Glen Ellen, CA. Delivery available on request.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/summer" },
+  alternates: { canonical: `${SITE_URL}/summer` },
 };
 
 const summerMeals = [

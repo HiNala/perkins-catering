@@ -4,12 +4,13 @@ import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { faqs } from "@/lib/business";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Resources — Catering Tips & FAQ",
   description:
     "Helpful resources for planning your catered event. FAQ, tips for choosing a caterer, seasonal ingredient guides, and event planning advice from Perkins Catering Co.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/resources" },
+  alternates: { canonical: `${SITE_URL}/resources` },
 };
 
 const planningTips = [

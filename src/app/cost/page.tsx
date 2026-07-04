@@ -4,12 +4,13 @@ import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Cost & Pricing — Catering Investment Guide",
   description:
     "Understand the investment for catering with Perkins Catering Co. Pricing varies by menu, guest count, and service style. Every quote is custom-crafted for your event.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/cost" },
+  alternates: { canonical: `${SITE_URL}/cost` },
 };
 
 const pricingTiers = [

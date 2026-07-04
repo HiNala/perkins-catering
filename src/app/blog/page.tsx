@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBlogPosts } from "@/lib/db";
 import { Section, SectionHeading } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { SITE_URL } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Catering tips, seasonal menus, wine pairings, and event planning advice from Executive Chef Austin Perkins of Perkins Catering Co.",
   alternates: {
-    canonical: "https://perkins-catering-production.up.railway.app/blog",
+    canonical: `${SITE_URL}/blog`,
   },
 };
 

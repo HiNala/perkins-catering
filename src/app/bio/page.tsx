@@ -4,12 +4,13 @@ import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Chef Austin Perkins — Executive Chef & Owner",
   description:
     "Meet Executive Chef Austin Perkins, founder of Perkins Catering Co. From Petaluma roots to Michelin-recommended chef at Nick's Cove, Austin brings restaurant-quality cuisine to every event.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/bio" },
+  alternates: { canonical: `${SITE_URL}/bio` },
 };
 
 const timeline = [

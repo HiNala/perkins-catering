@@ -4,12 +4,13 @@ import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { menu, sampleMenus } from "@/lib/menu";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Menu — Seasonal Catering Menu",
   description:
     "Explore Perkins Catering Co.'s seasonal catering menu: salads, soups, appetizers, and entrées crafted with locally sourced ingredients. Every menu is hand-crafted for your event.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/menu" },
+  alternates: { canonical: `${SITE_URL}/menu` },
 };
 
 export default function MenuPage() {

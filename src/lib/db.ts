@@ -5,7 +5,7 @@
  * All persistence is real database storage — there is no JSON-file fallback.
  */
 
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, sql, count } from "drizzle-orm";
 import { db, schema } from "./db-postgres";
 
 export interface InquiryRecord {
@@ -139,20 +139,26 @@ export async function getAnalyticsSummary(): Promise<{
   uniquePaths: number;
   recentEvents: AnalyticsRecord[];
 }> {
-  const events = await db
+  const recentEvents = await db
     .select()
     .from(schema.analyticsEvents)
     .orderBy(desc(schema.analyticsEvents.timestamp))
     .limit(50);
 
-  const allEvents = await db.select().from(schema.analyticsEvents);
-  const pageviews = allEvents.filter((e) => e.type === "pageview");
-  const uniquePaths = new Set(pageviews.map((e) => e.path)).size;
+  const pageviewCount = await db
+    .select({ count: count() })
+    .from(schema.analyticsEvents)
+    .where(eq(schema.analyticsEvents.type, "pageview"));
+
+  const uniquePathsResult = await db
+    .select({ count: sql<number>`count(distinct ${schema.analyticsEvents.path})` })
+    .from(schema.analyticsEvents)
+    .where(eq(schema.analyticsEvents.type, "pageview"));
 
   return {
-    totalPageviews: pageviews.length,
-    uniquePaths,
-    recentEvents: events.map(rowToAnalytics),
+    totalPageviews: pageviewCount[0]?.count ?? 0,
+    uniquePaths: uniquePathsResult[0]?.count ?? 0,
+    recentEvents: recentEvents.map(rowToAnalytics),
   };
 }
 

@@ -3,12 +3,13 @@ import Image from "next/image";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Photo Gallery — Events & Cuisine",
   description:
     "Browse photos of Perkins Catering Co.'s catered events, beautifully plated dishes, and memorable celebrations across Napa, Sonoma, and Marin counties.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/photos" },
+  alternates: { canonical: `${SITE_URL}/photos` },
 };
 
 const galleryImages = [
@@ -32,7 +33,7 @@ export default function PhotosPage() {
           name: "Perkins Catering Co. Photo Gallery",
           image: galleryImages.map((img) => ({
             "@type": "ImageObject",
-            contentUrl: `https://perkins-catering-production.up.railway.app${img.src}`,
+            contentUrl: `${SITE_URL}${img.src}`,
             description: img.alt,
           })),
         }}

@@ -1,0 +1,26 @@
+fix: centralize all URLs, fix analytics perf, harden JSON-LD
+
+Replace all hardcoded production URLs with SITE_URL from config:
+- 11 page metadata canonical URLs (bio, blog, contact, cost, events,
+  inquire, menu, photos, resources, summer, testimonials)
+- photos/page.tsx ImageGallery contentUrl
+- JsonLd.tsx businessJsonLd @id, url, and image fields
+- business.ts url field
+
+Security:
+- Escape `<` in JSON-LD script output to prevent `</script>` injection
+  that could break out of the script tag
+
+Performance:
+- Replace getAnalyticsSummary full-table scan with SQL aggregate
+  queries (count(*) and count(distinct path)) instead of fetching all
+  rows and filtering in JavaScript
+
+Config:
+- Make email sender address configurable via RESEND_FROM_EMAIL env var
+  (defaults to Resend testing domain)
+- Add RESEND_FROM_EMAIL to .env.example
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

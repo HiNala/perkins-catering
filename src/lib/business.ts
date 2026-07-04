@@ -4,6 +4,8 @@
  * Preserved per build brief requirements.
  */
 
+import { SITE_URL } from "./config";
+
 export const business = {
   name: "Perkins Catering Co.",
   tagline: "Local Ingredients. Expert Care. Quality Events.",
@@ -16,7 +18,7 @@ export const business = {
   chefName: "Austin Perkins",
   chefTitle: "Executive Chef & Owner",
   founded: 2011,
-  url: "https://perkins-catering-production.up.railway.app",
+  url: SITE_URL,
 } as const;
 
 export interface NavItem {

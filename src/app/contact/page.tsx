@@ -4,12 +4,13 @@ import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { business } from "@/lib/business";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Contact — Get in Touch",
   description:
     "Contact Perkins Catering Co. for catering inquiries in Napa, Sonoma, and Marin counties. Call 707-981-7822 or email reservations@perkinscateringco.com.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/contact" },
+  alternates: { canonical: `${SITE_URL}/contact` },
 };
 
 export default function ContactPage() {

@@ -3,12 +3,13 @@ import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
 import { InquiryForm } from "@/components/InquiryForm";
+import { SITE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Inquire — Start Your Catering Inquiry",
   description:
     "Tell us about your event and we'll craft a custom catering proposal. Multi-step inquiry form for weddings, corporate events, and private gatherings in Napa, Sonoma, and Marin counties.",
-  alternates: { canonical: "https://perkins-catering-production.up.railway.app/inquire" },
+  alternates: { canonical: `${SITE_URL}/inquire` },
 };
 
 export default function InquirePage() {
