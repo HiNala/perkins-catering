@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBlogPosts } from "@/lib/db";
-
-const SITE_URL = "https://perkins-catering-production.up.railway.app";
+import { SITE_URL } from "@/lib/config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [

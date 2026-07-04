@@ -1,0 +1,11 @@
+refactor: centralize SITE_URL and add noindex to auth pages
+
+- Import SITE_URL from centralized src/lib/config.ts in layout.tsx,
+  sitemap.ts, and robots.ts instead of duplicating the constant
+  (config.ts was previously unused dead code)
+- Add login/layout.tsx and signup/layout.tsx with noindex metadata
+  to prevent search engines from indexing auth pages
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

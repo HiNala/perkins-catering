@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/SiteChrome";
 import { Analytics } from "@/components/Analytics";
+import { SITE_URL } from "@/lib/config";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-heading",
@@ -16,8 +17,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
-
-const SITE_URL = "https://perkins-catering-production.up.railway.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
