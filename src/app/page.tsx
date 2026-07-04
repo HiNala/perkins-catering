@@ -34,37 +34,30 @@ export default function HomePage() {
 
         {/* Hero content */}
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center pt-20">
-          <p className="heading-uppercase text-sm sm:text-base text-white mb-6 animate-fade-in-up drop-shadow-lg">
-            {business.serviceArea}
-          </p>
-          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-semibold text-white leading-tight mb-6 animate-fade-in-up delay-100 drop-shadow-2xl">
+          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-semibold text-white leading-tight mb-6 animate-fade-in-up delay-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
             Local Ingredients.
             <br />
             Expert Care.
             <br />
             <span className="text-white">Quality Events.</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200 drop-shadow-lg">
+          <p className="text-xl sm:text-2xl text-white/95 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
             Farm-to-table catering led by Executive Chef Austin Perkins.
             Restaurant-quality dishes, crafted for your wedding, corporate event,
             or private gathering.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
-            <Button href="/inquire" size="lg" className="bg-sage text-white hover:bg-sage-dark shadow-xl">
+            <Button href="/inquire" size="lg" className="bg-sage text-white hover:bg-sage-dark shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
               Start an Inquiry
             </Button>
-            <Button href="/menu" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-sage shadow-xl">
+            <Button href="/menu" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-sage shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
               Explore the Menu
             </Button>
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-fade-in delay-500">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-sm uppercase tracking-widest text-white/60 drop-shadow">Scroll</span>
-            <div className="w-px h-12 bg-white/30" />
-          </div>
+          {/* Location banner below buttons */}
+          <p className="heading-uppercase text-sm sm:text-base text-white/90 mt-10 animate-fade-in-up delay-400 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
+            {business.serviceArea}
+          </p>
         </div>
       </section>
 

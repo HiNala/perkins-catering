@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { saveQuote, type InquiryRecord } from "@/lib/db";
-import { sendEmail, buildInquiryEmail } from "@/lib/email";
+import { sendEmail, buildInquiryEmail, buildClientConfirmationEmail } from "@/lib/email";
 import { business } from "@/lib/business";
 
 const quoteSchema = z.object({
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     };
     await saveQuote(record);
 
-    // Send email notification
+    // Send email notification to owner
     const { subject, html } = buildInquiryEmail(data);
     const emailSent = await sendEmail({
       to: business.email,
@@ -58,7 +58,22 @@ export async function POST(request: NextRequest) {
     });
 
     if (!emailSent) {
-      console.error("[api/quote] Saved to DB but email notification failed");
+      console.error("[api/quote] Saved to DB but owner email notification failed");
+    }
+
+    // Send confirmation email to client
+    const clientEmail = buildClientConfirmationEmail({
+      firstName: data.firstName,
+      formType: data.formType,
+    });
+    const clientEmailSent = await sendEmail({
+      to: data.email,
+      subject: clientEmail.subject,
+      html: clientEmail.html,
+    });
+
+    if (!clientEmailSent) {
+      console.error("[api/quote] Saved to DB but client confirmation email failed");
     }
 
     return NextResponse.json({

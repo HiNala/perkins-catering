@@ -6,6 +6,7 @@ import { useState, useTransition } from "react";
 import { logout } from "@/app/actions/auth";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
+import { NotificationsBell } from "./NotificationsBell";
 
 const navItems = [
   { label: "Dashboard", href: "/admin" },
@@ -26,17 +27,20 @@ export function AdminNav({ userEmail }: { userEmail: string }) {
     <aside className="w-full lg:w-64 lg:min-h-screen bg-charcoal text-cream flex flex-col lg:fixed lg:top-0 lg:left-0 z-30">
       {/* Brand */}
       <div className="p-5 border-b border-cream/10">
-        <Link href="/admin" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <Logo className="h-9 w-9 text-sage-light" />
-          <div className="flex flex-col leading-none">
-            <span className="font-heading text-lg font-semibold tracking-wide">
-              Perkins Catering
-            </span>
-            <span className="text-[9px] uppercase tracking-[0.2em] text-sage-light">
-              Admin
-            </span>
-          </div>
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/admin" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+            <Logo className="h-9 w-9 text-sage-light" />
+            <div className="flex flex-col leading-none">
+              <span className="font-heading text-lg font-semibold tracking-wide">
+                Perkins Catering
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.2em] text-sage-light">
+                Admin
+              </span>
+            </div>
+          </Link>
+          <NotificationsBell />
+        </div>
       </div>
 
       {/* Mobile toggle */}

@@ -53,6 +53,13 @@ export const metadata: Metadata = {
   creator: "Perkins Catering Co.",
   publisher: "Perkins Catering Co.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
