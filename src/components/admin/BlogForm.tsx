@@ -16,7 +16,13 @@ export function BlogForm({ action, post, submitLabel = "Publish Post" }: BlogFor
     undefined
   );
 
-  const formatDate = (iso: string) => new Date(iso).toISOString().slice(0, 10);
+  const formatDate = (iso: string) => {
+    const d = new Date(iso);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
 
   return (
     <form action={formAction} className="space-y-6">

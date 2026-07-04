@@ -46,6 +46,12 @@ export async function signup(
   state: AuthFormState | undefined,
   formData: FormData
 ): Promise<AuthFormState> {
+  if (process.env.ALLOW_SIGNUP !== "true") {
+    return {
+      message: "Public registration is disabled. Contact the administrator for account access.",
+    };
+  }
+
   const validated = signupSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),

@@ -68,6 +68,9 @@ export function buildInquiryEmail(data: {
   phone: string;
   newsletter: boolean;
 }): { subject: string; html: string } {
+  const esc = (s: string) =>
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
   const subject = `New ${data.formType === "quote" ? "Quote Request" : "Inquiry"} from ${data.firstName} ${data.lastName}`;
 
   const rows = [
@@ -94,8 +97,8 @@ export function buildInquiryEmail(data: {
           .map(
             ([label, value]) => `
           <tr>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #e5e0d8; font-weight: bold; width: 40%;">${label}</td>
-            <td style="padding: 8px 12px; border-bottom: 1px solid #e5e0d8;">${value}</td>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #e5e0d8; font-weight: bold; width: 40%;">${esc(label)}</td>
+            <td style="padding: 8px 12px; border-bottom: 1px solid #e5e0d8;">${esc(value)}</td>
           </tr>`
           )
           .join("")}
@@ -103,12 +106,12 @@ export function buildInquiryEmail(data: {
       ${
         data.message
           ? `<h2 style="color: #1a1a1a; font-size: 18px; margin-bottom: 10px;">Message</h2>
-             <p style="background: #faf8f5; padding: 16px; border-radius: 8px; line-height: 1.6;">${data.message}</p>`
+             <p style="background: #faf8f5; padding: 16px; border-radius: 8px; line-height: 1.6;">${esc(data.message)}</p>`
           : ""
       }
       <hr style="border: none; border-top: 1px solid #e5e0d8; margin: 24px 0;" />
       <p style="color: #8a8580; font-size: 14px;">
-        This inquiry was submitted via ${business.url}
+        This inquiry was submitted via ${esc(business.url)}
       </p>
     </div>
   `;

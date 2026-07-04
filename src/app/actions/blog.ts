@@ -13,6 +13,7 @@ import {
   deleteBlogPost,
   getBlogPostById,
 } from "@/lib/db";
+import { verifySession } from "@/lib/dal";
 
 const postSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -55,6 +56,7 @@ export async function createPost(
   state: BlogFormState | undefined,
   formData: FormData
 ): Promise<BlogFormState> {
+  await verifySession();
   const rawSlug = (formData.get("slug") as string) || "";
   const data = postSchema.safeParse({
     title: formData.get("title"),
@@ -101,6 +103,7 @@ export async function updatePost(
   state: BlogFormState | undefined,
   formData: FormData
 ): Promise<BlogFormState> {
+  await verifySession();
   const rawSlug = (formData.get("slug") as string) || "";
   const data = postSchema.safeParse({
     title: formData.get("title"),
@@ -118,6 +121,7 @@ export async function updatePost(
   }
 
   try {
+    const existingPost = await getBlogPostById(id);
     await updateBlogPost(id, {
       title: data.data.title,
       slug: data.data.slug,
@@ -128,6 +132,12 @@ export async function updatePost(
       status: data.data.status,
       publishedAt: data.data.publishedAt,
     });
+    revalidatePath("/blog");
+    revalidatePath(`/blog/${data.data.slug}`);
+    if (existingPost && existingPost.slug !== data.data.slug) {
+      revalidatePath(`/blog/${existingPost.slug}`);
+    }
+    revalidatePath("/admin/blog");
   } catch (err) {
     return {
       message:
@@ -137,13 +147,11 @@ export async function updatePost(
     };
   }
 
-  revalidatePath("/blog");
-  revalidatePath(`/blog/${data.data.slug}`);
-  revalidatePath("/admin/blog");
   redirect("/admin/blog");
 }
 
 export async function deletePost(id: number): Promise<void> {
+  await verifySession();
   const post = await getBlogPostById(id);
   await deleteBlogPost(id);
   if (post) {

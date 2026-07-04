@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { saveAnalyticsEvent, getAnalyticsSummary, type AnalyticsRecord } from "@/lib/db";
+import { getSession } from "@/lib/dal";
 
 const analyticsSchema = z.object({
   type: z.enum(["pageview", "click", "conversion"]),
@@ -46,6 +47,13 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
+    const session = await getSession();
+    if (!session?.userId) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
     const summary = await getAnalyticsSummary();
     return NextResponse.json(summary);
   } catch (error) {

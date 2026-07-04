@@ -50,12 +50,16 @@ export async function POST(request: NextRequest) {
 
     // Send email notification
     const { subject, html } = buildInquiryEmail(data);
-    await sendEmail({
+    const emailSent = await sendEmail({
       to: business.email,
       subject,
       html,
       replyTo: data.email,
     });
+
+    if (!emailSent) {
+      console.error("[api/quote] Saved to DB but email notification failed");
+    }
 
     return NextResponse.json({
       success: true,

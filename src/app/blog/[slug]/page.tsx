@@ -8,6 +8,7 @@ import { Markdown } from "@/components/Markdown";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   if (!post) return { title: "Blog Post" };
 
-  const url = `https://perkins-catering-production.up.railway.app/blog/${post.slug}`;
+  const url = `${SITE_URL}/blog/${post.slug}`;
   return {
     title: post.title,
     description: post.excerpt,
@@ -79,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
           description: post.excerpt,
           datePublished: post.publishedAt,
           author: { "@type": "Person", name: post.author },
-          url: `https://perkins-catering-production.up.railway.app/blog/${post.slug}`,
+          url: `${SITE_URL}/blog/${post.slug}`,
           image: post.coverImage || undefined,
         }}
       />

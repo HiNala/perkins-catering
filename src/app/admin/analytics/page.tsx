@@ -51,6 +51,15 @@ export default async function AnalyticsPage() {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 8);
 
+  const isSafeUrl = (url: string): boolean => {
+    try {
+      const parsed = new URL(url);
+      return ["http:", "https:"].includes(parsed.protocol);
+    } catch {
+      return false;
+    }
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -128,7 +137,7 @@ export default async function AnalyticsPage() {
                   <span className="text-charcoal truncate mr-2">
                     {ref === "(direct)" ? (
                       <span className="text-stone">(Direct / None)</span>
-                    ) : (
+                    ) : isSafeUrl(ref) ? (
                       <a
                         href={ref}
                         target="_blank"
@@ -137,6 +146,8 @@ export default async function AnalyticsPage() {
                       >
                         {ref}
                       </a>
+                    ) : (
+                      <span className="text-stone truncate">{ref}</span>
                     )}
                   </span>
                   <span className="text-stone flex-shrink-0 font-medium">{count}</span>

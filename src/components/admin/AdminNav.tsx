@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { logout } from "@/app/actions/auth";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/Logo";
@@ -17,6 +17,7 @@ const navItems = [
 export function AdminNav({ userEmail }: { userEmail: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const isActive = (href: string) =>
     href === "/admin" ? pathname === "/admin" : pathname.startsWith(href);
@@ -80,14 +81,13 @@ export function AdminNav({ userEmail }: { userEmail: string }) {
           >
             ← View Site
           </Link>
-          <form action={logout}>
-            <button
-              type="submit"
-              className="w-full text-left px-4 py-2.5 text-sm text-cream/60 hover:text-red-300 transition-colors"
-            >
-              Log Out
-            </button>
-          </form>
+          <button
+            onClick={() => startTransition(() => logout())}
+            disabled={isPending}
+            className="w-full text-left px-4 py-2.5 text-sm text-cream/60 hover:text-red-300 transition-colors disabled:opacity-50"
+          >
+            {isPending ? "Logging out..." : "Log Out"}
+          </button>
           <p className="px-4 pt-2 text-xs text-cream/40 truncate" title={userEmail}>
             {userEmail}
           </p>
