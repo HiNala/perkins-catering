@@ -1,0 +1,14 @@
+fix: AUTH_SECRET production guard, guest count validation, custom 404
+
+- AUTH_SECRET: throw at runtime in production if not set (lazy check
+  via getEncodedKey() to avoid breaking next build which runs in
+  production mode)
+- Guest count: add Zod refine validation in both inquiry and quote
+  API routes to reject "0", negative numbers, and non-numeric values;
+  add matching client-side validation in InquiryForm
+- Custom 404 page: add branded not-found.tsx with logo, 404 heading,
+  and links to home and inquiry pages
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

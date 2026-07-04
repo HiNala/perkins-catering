@@ -8,7 +8,10 @@ const inquirySchema = z.object({
   formType: z.string(),
   eventType: z.string().min(1, "Event type is required"),
   eventDate: z.string().min(1, "Event date is required"),
-  guestCount: z.string().min(1, "Guest count is required"),
+  guestCount: z.string().min(1, "Guest count is required").refine(
+    (val) => !isNaN(parseInt(val)) && parseInt(val) > 0,
+    "Guest count must be a positive number"
+  ),
   location: z.string().optional().default(""),
   serviceStyle: z.string().optional().default(""),
   dietaryRestrictions: z.string().optional().default(""),

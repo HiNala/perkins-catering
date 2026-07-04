@@ -93,7 +93,11 @@ export function InquiryForm() {
     if (stepNum === 1) {
       if (!data.eventType) newErrors.eventType = "Please select an event type";
       if (!data.eventDate) newErrors.eventDate = "Please provide an event date";
-      if (!data.guestCount) newErrors.guestCount = "Please estimate your guest count";
+      if (!data.guestCount) {
+        newErrors.guestCount = "Please estimate your guest count";
+      } else if (isNaN(parseInt(data.guestCount)) || parseInt(data.guestCount) <= 0) {
+        newErrors.guestCount = "Guest count must be a positive number";
+      }
     }
 
     if (stepNum === 2 && formType === "quote") {

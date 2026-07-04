@@ -15,10 +15,19 @@ export interface SessionPayload {
 }
 
 const SECRET = process.env.AUTH_SECRET;
-if (!SECRET) {
+if (!SECRET && process.env.NODE_ENV !== "production") {
   console.warn("[session] AUTH_SECRET not set — using insecure dev fallback.");
 }
-const encodedKey = new TextEncoder().encode(SECRET || "dev-insecure-secret-change-me");
+
+function getEncodedKey(): Uint8Array {
+  if (!SECRET) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("[session] AUTH_SECRET must be set in production.");
+    }
+    return new TextEncoder().encode("dev-insecure-secret-change-me");
+  }
+  return new TextEncoder().encode(SECRET);
+}
 
 const SESSION_COOKIE = "perkins_session";
 const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
@@ -30,7 +39,7 @@ export async function encrypt(payload: SessionPayload): Promise<string> {
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime("7d")
-    .sign(encodedKey);
+    .sign(getEncodedKey());
 }
 
 export async function decrypt(
@@ -38,7 +47,7 @@ export async function decrypt(
 ): Promise<SessionPayload | null> {
   if (!token) return null;
   try {
-    const { payload } = await jwtVerify(token, encodedKey, {
+    const { payload } = await jwtVerify(token, getEncodedKey(), {
       algorithms: ["HS256"],
     });
     return payload as unknown as SessionPayload;
