@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { QuickLeadForm } from "@/components/QuickLeadForm";
-import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL } from "@/lib/config";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Events — Weddings, Corporate & Private Gatherings",
   description:
     "Perkins Catering Co. caters weddings, corporate events, and private gatherings across Napa, Sonoma, and Marin counties. Custom menus, expert service, and restaurant-quality cuisine.",
-  alternates: { canonical: `${SITE_URL}/events` },
-};
+  path: "/events",
+});
 
 const eventTypes = [
   {
@@ -59,16 +58,24 @@ export default function EventsPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Catering",
-          provider: {
-            "@type": "CateringService",
-            name: "Perkins Catering Co.",
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            serviceType: "Catering",
+            provider: {
+              "@type": "CateringService",
+              name: "Perkins Catering Co.",
+            },
+            areaServed: ["Napa County", "Sonoma County", "Marin County"],
           },
-          areaServed: ["Napa County", "Sonoma County", "Marin County"],
-        }}
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Events", path: "/events" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header */}

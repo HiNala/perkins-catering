@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Photo Gallery — Events & Cuisine",
   description:
     "Browse photos of Perkins Catering Co.'s catered events, beautifully plated dishes, and memorable celebrations across Napa, Sonoma, and Marin counties.",
-  alternates: { canonical: `${SITE_URL}/photos` },
-};
+  path: "/photos",
+});
 
 const galleryImages = [
   { src: "/images/gallery/gallery-01.jpg", alt: "Catered event dish by Perkins Catering Co." },
@@ -27,16 +27,24 @@ export default function PhotosPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "ImageGallery",
-          name: "Perkins Catering Co. Photo Gallery",
-          image: galleryImages.map((img) => ({
-            "@type": "ImageObject",
-            contentUrl: `${SITE_URL}${img.src}`,
-            description: img.alt,
-          })),
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ImageGallery",
+            name: "Perkins Catering Co. Photo Gallery",
+            image: galleryImages.map((img) => ({
+              "@type": "ImageObject",
+              contentUrl: `${SITE_URL}${img.src}`,
+              description: img.alt,
+            })),
+          },
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Photos", path: "/photos" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header */}

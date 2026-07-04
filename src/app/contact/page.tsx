@@ -1,27 +1,34 @@
-import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { business } from "@/lib/business";
-import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact — Get in Touch",
   description:
     "Contact Perkins Catering Co. for catering inquiries in Napa, Sonoma, and Marin counties. Call 707-981-7822 or email reservations@perkinscateringco.com.",
-  alternates: { canonical: `${SITE_URL}/contact` },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          name: "Contact Perkins Catering Co.",
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Perkins Catering Co.",
+          },
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Contact", path: "/contact" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header */}

@@ -1,29 +1,36 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Section } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { InquiryForm } from "@/components/InquiryForm";
-import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Inquire — Start Your Catering Inquiry",
   description:
     "Tell us about your event and we'll craft a custom catering proposal. Multi-step inquiry form for weddings, corporate events, and private gatherings in Napa, Sonoma, and Marin counties.",
-  alternates: { canonical: `${SITE_URL}/inquire` },
-};
+  path: "/inquire",
+});
 
 export default function InquirePage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Catering Inquiry",
-          description:
-            "Multi-step catering inquiry form for Perkins Catering Co.",
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Catering Inquiry",
+            description:
+              "Multi-step catering inquiry form for Perkins Catering Co.",
+          },
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Inquire", path: "/inquire" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header with hero image */}

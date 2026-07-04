@@ -1,19 +1,18 @@
-import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { CTABanner } from "@/components/CTABanner";
 import { QuickLeadForm } from "@/components/QuickLeadForm";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { business } from "@/lib/business";
-import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Summer Meals — Seasonal Pickup & Delivery",
   description:
     "Perkins Catering Co.'s summer meal program offers chef-prepared seasonal dishes for pickup at Imagery Winery in Glen Ellen, CA. Delivery available on request.",
-  alternates: { canonical: `${SITE_URL}/summer` },
-};
+  path: "/summer",
+});
 
 const summerMeals = [
   {
@@ -43,16 +42,24 @@ export default function SummerPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Summer Meal Program",
-          provider: {
-            "@type": "CateringService",
-            name: "Perkins Catering Co.",
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            serviceType: "Summer Meal Program",
+            provider: {
+              "@type": "CateringService",
+              name: "Perkins Catering Co.",
+            },
+            areaServed: "Sonoma County",
           },
-          areaServed: "Sonoma County",
-        }}
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Summer Meals", path: "/summer" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header */}

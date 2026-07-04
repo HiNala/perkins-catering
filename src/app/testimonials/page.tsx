@@ -1,32 +1,39 @@
-import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { testimonials } from "@/lib/business";
-import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Testimonials — Client Reviews",
   description:
     "Read what clients say about Perkins Catering Co. From wineries to weddings to corporate events, our clients rave about the food, service, and professionalism.",
-  alternates: { canonical: `${SITE_URL}/testimonials` },
-};
+  path: "/testimonials",
+});
 
 export default function TestimonialsPage() {
   return (
     <>
       <JsonLd
-        data={testimonials.map((t) => ({
-          "@type": "Review",
-          reviewBody: t.quote,
-          author: { "@type": "Person", name: t.author },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          itemReviewed: {
-            "@type": "CateringService",
-            name: "Perkins Catering Co.",
-          },
-        }))}
+        data={[
+          ...testimonials.map((t) => ({
+            "@type": "Review",
+            reviewBody: t.quote,
+            author: { "@type": "Person", name: t.author },
+            reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+            itemReviewed: {
+              "@type": "CateringService",
+              name: "Perkins Catering Co.",
+            },
+          })),
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Testimonials", path: "/testimonials" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header */}

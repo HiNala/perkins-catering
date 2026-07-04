@@ -1,18 +1,17 @@
-import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { CTABanner } from "@/components/CTABanner";
 import { QuickLeadForm } from "@/components/QuickLeadForm";
-import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL } from "@/lib/config";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Cost & Pricing — Catering Investment Guide",
   description:
     "Understand the investment for catering with Perkins Catering Co. Pricing varies by menu, guest count, and service style. Every quote is custom-crafted for your event.",
-  alternates: { canonical: `${SITE_URL}/cost` },
-};
+  path: "/cost",
+});
 
 const pricingTiers = [
   {
@@ -97,13 +96,21 @@ export default function CostPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "PriceSpecification",
-          priceCurrency: "USD",
-          description:
-            "Catering pricing varies by event type, menu, and guest count. Contact for a custom quote.",
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "PriceSpecification",
+            priceCurrency: "USD",
+            description:
+              "Catering pricing varies by event type, menu, and guest count. Contact for a custom quote.",
+          },
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Cost & Pricing", path: "/cost" },
+            ])
+          ),
+        ]}
       />
 
       {/* Header */}

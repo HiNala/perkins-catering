@@ -1,22 +1,21 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/db";
 import { Section, SectionHeading } from "@/components/Section";
 import { CTABanner } from "@/components/CTABanner";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 import { SITE_URL } from "@/lib/config";
 import { estimateReadTime, formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Blog — Catering Insights from Wine Country",
   description:
     "Catering tips, seasonal menus, wine pairings, and event planning advice from Executive Chef Austin Perkins of Perkins Catering Co.",
-  alternates: {
-    canonical: `${SITE_URL}/blog`,
-  },
-};
+  path: "/blog",
+});
 
 export default async function BlogPage() {
   let posts: Awaited<ReturnType<typeof getBlogPosts>> = [];
@@ -32,6 +31,30 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Perkins Catering Co. Blog",
+            description:
+              "Catering tips, seasonal menus, wine pairings, and event planning advice from Executive Chef Austin Perkins.",
+            url: `${SITE_URL}/blog`,
+            publisher: {
+              "@type": "Organization",
+              name: "Perkins Catering Co.",
+              url: SITE_URL,
+            },
+          },
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Blog", path: "/blog" },
+            ])
+          ),
+        ]}
+      />
+
       {/* Header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">

@@ -37,6 +37,11 @@ export const business = {
     "Glen Ellen", "Napa", "Calistoga", "St. Helena", "Yountville",
     "San Rafael", "Novato", "Mill Valley", "Sausalito",
   ],
+  // Social media — for sameAs schema and footer links
+  social: {
+    instagram: "https://www.instagram.com/perkinscateringco",
+    facebook: "https://www.facebook.com/perkinscateringco",
+  },
 } as const;
 
 export interface NavItem {

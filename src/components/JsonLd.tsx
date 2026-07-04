@@ -75,7 +75,10 @@ export function businessJsonLd() {
         closes: "16:00",
       },
     ],
-    sameAs: [],
+    sameAs: [
+      business.social.instagram,
+      business.social.facebook,
+    ],
   };
 }
 

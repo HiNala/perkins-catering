@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd, faqJsonLd } from "@/components/JsonLd";
+import { JsonLd, faqJsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { faqs } from "@/lib/business";
-import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Resources — Catering Tips & FAQ",
   description:
     "Helpful resources for planning your catered event. FAQ, tips for choosing a caterer, seasonal ingredient guides, and event planning advice from Perkins Catering Co.",
-  alternates: { canonical: `${SITE_URL}/resources` },
-};
+  path: "/resources",
+});
 
 const planningTips = [
   {
@@ -35,7 +34,17 @@ const planningTips = [
 export default function ResourcesPage() {
   return (
     <>
-      <JsonLd data={faqJsonLd(faqs)} />
+      <JsonLd
+        data={[
+          faqJsonLd(faqs),
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Resources", path: "/resources" },
+            ])
+          ),
+        ]}
+      />
 
       {/* Header */}
       <section className="pt-32 pb-12 bg-charcoal text-cream">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/SiteChrome";
@@ -52,6 +52,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Austin Perkins" }],
   creator: "Perkins Catering Co.",
   publisher: "Perkins Catering Co.",
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -95,6 +96,12 @@ export const metadata: Metadata = {
     "geo.position": `${business.geo.latitude};${business.geo.longitude}`,
     "ICBM": `${business.geo.latitude}, ${business.geo.longitude}`,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#1a1a1a",
 };
 
 export default function RootLayout({

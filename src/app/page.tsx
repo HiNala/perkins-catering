@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
@@ -7,6 +8,14 @@ import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABanner } from "@/components/CTABanner";
 import { JsonLd, businessJsonLd, faqJsonLd } from "@/components/JsonLd";
 import { business, services, testimonials, faqs } from "@/lib/business";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Perkins Catering Co. — Farm-to-Table Catering in Sonoma County",
+  description:
+    "Perkins Catering Co. brings restaurant-quality, locally sourced catering to Napa, Sonoma, and Marin counties. Led by Executive Chef Austin Perkins, we craft custom menus for weddings, corporate events, and private gatherings.",
+  path: "",
+});
 
 export default function HomePage() {
   // Pick top 4 FAQs for AEO on homepage

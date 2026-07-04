@@ -1,37 +1,44 @@
-import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { QuickLeadForm } from "@/components/QuickLeadForm";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
 import { menu, sampleMenus } from "@/lib/menu";
-import { SITE_URL } from "@/lib/config";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Menu — Seasonal Catering Menu",
   description:
     "Explore Perkins Catering Co.'s seasonal catering menu: salads, soups, appetizers, and entrées crafted with locally sourced ingredients. Every menu is hand-crafted for your event.",
-  alternates: { canonical: `${SITE_URL}/menu` },
-};
+  path: "/menu",
+});
 
 export default function MenuPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Menu",
-          name: "Perkins Catering Co. Seasonal Menu",
-          hasMenuSection: menu.map((cat) => ({
-            "@type": "MenuSection",
-            name: cat.title,
-            hasMenuItem: cat.items.map((item) => ({
-              "@type": "MenuItem",
-              name: item.name,
-              description: item.description,
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Menu",
+            name: "Perkins Catering Co. Seasonal Menu",
+            hasMenuSection: menu.map((cat) => ({
+              "@type": "MenuSection",
+              name: cat.title,
+              hasMenuItem: cat.items.map((item) => ({
+                "@type": "MenuItem",
+                name: item.name,
+                description: item.description,
+              })),
             })),
-          })),
-        }}
+          },
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Menu", path: "/menu" },
+            ])
+          ),
+        ]}
       />
 
       {/* Page header */}

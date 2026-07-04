@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { CTABanner } from "@/components/CTABanner";
-import { JsonLd } from "@/components/JsonLd";
-import { SITE_URL } from "@/lib/config";
+import { JsonLd, breadcrumbJsonLd } from "@/components/JsonLd";
+import { pageMetadata, breadcrumbItems } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Chef Austin Perkins — Executive Chef & Owner",
   description:
     "Meet Executive Chef Austin Perkins, founder of Perkins Catering Co. From Petaluma roots to Michelin-recommended chef at Nick's Cove, Austin brings restaurant-quality cuisine to every event.",
-  alternates: { canonical: `${SITE_URL}/bio` },
-};
+  path: "/bio",
+});
 
 const timeline = [
   {
@@ -56,19 +55,27 @@ export default function BioPage() {
   return (
     <>
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Austin Perkins",
-          jobTitle: "Executive Chef & Owner",
-          worksFor: {
-            "@type": "Organization",
-            name: "Perkins Catering Co.",
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Austin Perkins",
+            jobTitle: "Executive Chef & Owner",
+            worksFor: {
+              "@type": "Organization",
+              name: "Perkins Catering Co.",
+            },
+            description:
+              "Executive Chef and Owner of Perkins Catering Co. Michelin-recommended chef with roots in Petaluma and experience at Cyrus and Nick's Cove.",
+            knowsAbout: ["Catering", "Farm-to-table cuisine", "Wine country cuisine"],
           },
-          description:
-            "Executive Chef and Owner of Perkins Catering Co. Michelin-recommended chef with roots in Petaluma and experience at Cyrus and Nick's Cove.",
-          knowsAbout: ["Catering", "Farm-to-table cuisine", "Wine country cuisine"],
-        }}
+          breadcrumbJsonLd(
+            breadcrumbItems([
+              { name: "Home", path: "/" },
+              { name: "Chef", path: "/bio" },
+            ])
+          ),
+        ]}
       />
 
       {/* Hero */}
