@@ -44,21 +44,46 @@ export const business = {
   },
 } as const;
 
+export interface NavChild {
+  label: string;
+  href: string;
+  description?: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
   highlight?: boolean;
+  children?: NavChild[];
 }
 
 export const navigation: NavItem[] = [
-  { label: "Chef", href: "/bio" },
-  { label: "Menu", href: "/menu" },
-  { label: "Photos", href: "/photos" },
-  { label: "Events", href: "/events" },
-  { label: "Summer", href: "/summer" },
-  { label: "Blog", href: "/blog" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Resources", href: "/resources" },
+  {
+    label: "About",
+    href: "/bio",
+    children: [
+      { label: "Chef", href: "/bio", description: "Meet Austin Perkins" },
+      { label: "Testimonials", href: "/testimonials", description: "Client reviews" },
+    ],
+  },
+  {
+    label: "Catering",
+    href: "/menu",
+    children: [
+      { label: "Menu", href: "/menu", description: "Seasonal catering menus" },
+      { label: "Events", href: "/events", description: "Weddings, corporate & private" },
+      { label: "Summer Meals", href: "/summer", description: "Pickup & delivery" },
+    ],
+  },
+  { label: "Gallery", href: "/photos" },
+  {
+    label: "Insights",
+    href: "/blog",
+    children: [
+      { label: "Blog", href: "/blog", description: "Catering insights from wine country" },
+      { label: "Resources", href: "/resources", description: "Tips & FAQ" },
+    ],
+  },
   { label: "Inquire", href: "/inquire", highlight: true },
 ];
 
