@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* Hero */}
       <article>
-        <section className="pt-32 pb-12 bg-charcoal text-cream">
+        <section className="pt-32 pb-12 bg-sage text-white">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <Link
               href="/blog"

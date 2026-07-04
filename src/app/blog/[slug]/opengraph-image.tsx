@@ -42,7 +42,7 @@ export default async function Image({
             width: "56px",
             height: "56px",
             borderRadius: "50%",
-            background: "#5c7560",
+            background: "#000000",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -59,7 +59,7 @@ export default async function Image({
           </div>
           <div
             style={{
-              color: "#7a9580",
+              color: "#ffffff",
               fontSize: "14px",
               letterSpacing: "2px",
               textTransform: "uppercase",
@@ -98,7 +98,7 @@ export default async function Image({
       <div
         style={{
           display: "flex",
-          color: "#7a9580",
+          color: "#ffffff",
           fontSize: "18px",
           letterSpacing: "1px",
           textTransform: "uppercase",

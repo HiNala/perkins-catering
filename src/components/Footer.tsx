@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business, footerNav } from "@/lib/business";
-import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -10,7 +10,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <Logo className="h-10 w-10 text-sage-light" />
+              <Image
+                src="/images/logo.png"
+                alt="Perkins Catering Co. logo"
+                width={48}
+                height={48}
+                className="rounded-full"
+              />
               <div className="flex flex-col leading-none">
                 <span className="font-heading text-xl font-semibold tracking-wide">
                   Perkins Catering

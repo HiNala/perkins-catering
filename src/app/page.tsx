@@ -6,6 +6,7 @@ import { Card } from "@/components/Card";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { CTABanner } from "@/components/CTABanner";
+import { HeroSlider } from "@/components/HeroSlider";
 import { JsonLd, businessJsonLd, faqJsonLd } from "@/components/JsonLd";
 import { business, services, testimonials, faqs } from "@/lib/business";
 import { pageMetadata } from "@/lib/seo";
@@ -25,44 +26,33 @@ export default function HomePage() {
     <>
       <JsonLd data={[businessJsonLd(), faqJsonLd(homepageFaqs)]} />
 
-      {/* ===== Full-bleed hero ===== */}
+      {/* ===== Full-bleed hero with image slider ===== */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background image — full-bleed */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-bg.jpg"
-            alt="Beautifully plated catering dish by Perkins Catering Co."
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          {/* Gradient overlay for text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal/70" />
-        </div>
+        {/* Background image slider — full-bleed */}
+        <HeroSlider />
 
         {/* Hero content */}
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center pt-20">
-          <p className="heading-uppercase text-sm sm:text-base text-sage-light mb-6 animate-fade-in-up">
+          <p className="heading-uppercase text-sm sm:text-base text-white mb-6 animate-fade-in-up drop-shadow-lg">
             {business.serviceArea}
           </p>
-          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-semibold text-white leading-tight mb-6 animate-fade-in-up delay-100">
+          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-semibold text-white leading-tight mb-6 animate-fade-in-up delay-100 drop-shadow-2xl">
             Local Ingredients.
             <br />
             Expert Care.
             <br />
-            <span className="text-sage-light">Quality Events.</span>
+            <span className="text-white">Quality Events.</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-cream/80 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200">
+          <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up delay-200 drop-shadow-lg">
             Farm-to-table catering led by Executive Chef Austin Perkins.
             Restaurant-quality dishes, crafted for your wedding, corporate event,
             or private gathering.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
-            <Button href="/inquire" size="lg" className="bg-sage text-white hover:bg-sage-dark">
+            <Button href="/inquire" size="lg" className="bg-sage text-white hover:bg-sage-dark shadow-xl">
               Start an Inquiry
             </Button>
-            <Button href="/menu" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-charcoal">
+            <Button href="/menu" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-sage shadow-xl">
               Explore the Menu
             </Button>
           </div>
@@ -71,7 +61,7 @@ export default function HomePage() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-fade-in delay-500">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-sm uppercase tracking-widest text-white/60">Scroll</span>
+            <span className="text-sm uppercase tracking-widest text-white/60 drop-shadow">Scroll</span>
             <div className="w-px h-12 bg-white/30" />
           </div>
         </div>

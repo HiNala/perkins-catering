@@ -32,7 +32,7 @@ export default function ContactPage() {
       />
 
       {/* Header */}
-      <section className="pt-32 pb-12 bg-charcoal text-cream">
+      <section className="pt-32 pb-12 bg-sage text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="heading-uppercase text-sm text-sage-light mb-4">
             We&rsquo;d Love to Hear From You

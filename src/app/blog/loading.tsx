@@ -1,7 +1,7 @@
 export default function BlogLoading() {
   return (
     <>
-      <section className="pt-32 pb-12 bg-charcoal text-cream">
+      <section className="pt-32 pb-12 bg-sage text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="h-4 w-32 bg-cream/20 rounded animate-pulse mx-auto mb-4" />
           <div className="h-12 w-80 bg-cream/20 rounded animate-pulse mx-auto mb-4" />

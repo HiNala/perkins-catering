@@ -8,8 +8,17 @@ services:
       - AUTH_SECRET=${AUTH_SECRET:-dev-insecure-secret-change-me}
       - RESEND_API_KEY=${RESEND_API_KEY:-}
       - NEXT_PUBLIC_SITE_URL=http://localhost:3000
+      # S3 / MinIO storage
+      - S3_ENDPOINT=http://minio:9000
+      - S3_REGION=us-east-1
+      - S3_BUCKET=perkins-images
+      - S3_ACCESS_KEY_ID=perkins
+      - S3_SECRET_ACCESS_KEY=perkins123
+      - S3_URL_STYLE=path
     depends_on:
       postgres:
+        condition: service_healthy
+      minio:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1"]
@@ -34,5 +43,37 @@ services:
       timeout: 5s
       retries: 5
 
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=perkins
+      - MINIO_ROOT_PASSWORD=perkins123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - miniodata:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Creates the bucket on first run
+  minio-init:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio:9000 perkins perkins123;
+      mc mb local/perkins-images --ignore-existing;
+      mc anonymous set download local/perkins-images;
+      exit 0;
+      "
+
 volumes:
   pgdata:
+  miniodata:
