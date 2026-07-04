@@ -178,7 +178,7 @@ export default function SummerPage() {
       </Section>
 
       <CTABanner
-        title="Planning a Summer Event?"
+        title="Ready for a Summer to Remember?"
         subtitle="From backyard BBQs to vineyard weddings, we cater all your summer celebrations."
       />
     </>
