@@ -1,0 +1,22 @@
+feat: crisp black-and-white aesthetic, improved text contrast
+
+Color system overhaul:
+- Sage green (#5c7560) → pure black (#000000) for buttons, accents, active states
+- Sage-dark → charcoal (#1a1a1a) for hover states
+- Sage-light → white (#ffffff) for text on dark backgrounds
+- Stone (#8a8580) → darker gray (#666666) for WCAG AA contrast on cream
+- Stone-light (#b5b0aa) → #999999 for scrollbar and decorative elements
+- Cream-dark slightly cooler (#f3efe8 → #f0ede8)
+- Border slightly cooler (#e5e0d8 → #e0ddd8)
+
+Contrast fixes:
+- Blog post "All Posts" hover: was hover:text-sage (would be black on dark)
+  → hover:text-white for proper contrast on charcoal background
+- Stone text darkened from #8a8580 (3.5:1 ratio) to #666666 (5.7:1 ratio)
+  on cream backgrounds, now passes WCAG AA
+
+Design system comment updated to reflect the new crisp B&W aesthetic.
+
+Generated with [Devin](https://devin.ai)
+
+Co-Authored-By: Devin <158243242+devin-ai-integration[bot]@users.noreply.github.com>

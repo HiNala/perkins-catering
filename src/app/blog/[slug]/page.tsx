@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <Link
               href="/blog"
-              className="text-base text-sage-light hover:text-sage transition-colors mb-6 inline-block"
+              className="text-base text-sage-light hover:text-white transition-colors mb-6 inline-block"
             >
               ← All Posts
             </Link>

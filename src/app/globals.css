@@ -2,26 +2,25 @@
 
 /* ============================================
    Perkins Catering Co. — Design System
-   Inspired by ezcater's cool, elevated, rounded style.
-   Modernized with a wine-country palette: deep charcoal,
-   warm cream, and a signature sage-green accent.
+   Crisp black-and-white aesthetic with warm off-white
+   backgrounds. High-contrast, editorial, timeless.
    ============================================ */
 
 :root {
-  /* Brand palette — modernized from design-kit */
+  /* Brand palette — crisp black & white */
   --color-cream: #faf8f5;
-  --color-cream-dark: #f3efe8;
+  --color-cream-dark: #f0ede8;
   --color-charcoal: #1a1a1a;
   --color-charcoal-light: #2d2d2d;
-  --color-sage: #5c7560;
-  --color-sage-dark: #4a5e4d;
-  --color-sage-light: #7a9580;
+  --color-sage: #000000;
+  --color-sage-dark: #1a1a1a;
+  --color-sage-light: #ffffff;
   --color-gold: #c4a35a;
   --color-gold-light: #d4b86a;
-  --color-stone: #8a8580;
-  --color-stone-light: #b5b0aa;
+  --color-stone: #666666;
+  --color-stone-light: #999999;
   --color-white: #ffffff;
-  --color-border: #e5e0d8;
+  --color-border: #e0ddd8;
 
   /* Typography */
   --font-heading: "Cormorant Garamond", Georgia, "Times New Roman", serif;
